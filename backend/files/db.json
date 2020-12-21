@@ -1,0 +1,4119 @@
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 4,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 5,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add site",
+      "content_type": 6,
+      "codename": "add_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change site",
+      "content_type": 6,
+      "codename": "change_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete site",
+      "content_type": 6,
+      "codename": "delete_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view site",
+      "content_type": 6,
+      "codename": "view_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add Token",
+      "content_type": 7,
+      "codename": "add_token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change Token",
+      "content_type": 7,
+      "codename": "change_token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete Token",
+      "content_type": 7,
+      "codename": "delete_token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view Token",
+      "content_type": 7,
+      "codename": "view_token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add task result",
+      "content_type": 8,
+      "codename": "add_taskresult"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change task result",
+      "content_type": 8,
+      "codename": "change_taskresult"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete task result",
+      "content_type": 8,
+      "codename": "delete_taskresult"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view task result",
+      "content_type": 8,
+      "codename": "view_taskresult"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add crontab",
+      "content_type": 9,
+      "codename": "add_crontabschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change crontab",
+      "content_type": 9,
+      "codename": "change_crontabschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete crontab",
+      "content_type": 9,
+      "codename": "delete_crontabschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view crontab",
+      "content_type": 9,
+      "codename": "view_crontabschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add interval",
+      "content_type": 10,
+      "codename": "add_intervalschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change interval",
+      "content_type": 10,
+      "codename": "change_intervalschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete interval",
+      "content_type": 10,
+      "codename": "delete_intervalschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view interval",
+      "content_type": 10,
+      "codename": "view_intervalschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add periodic task",
+      "content_type": 11,
+      "codename": "add_periodictask"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change periodic task",
+      "content_type": 11,
+      "codename": "change_periodictask"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete periodic task",
+      "content_type": 11,
+      "codename": "delete_periodictask"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view periodic task",
+      "content_type": 11,
+      "codename": "view_periodictask"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add periodic tasks",
+      "content_type": 12,
+      "codename": "add_periodictasks"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change periodic tasks",
+      "content_type": 12,
+      "codename": "change_periodictasks"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete periodic tasks",
+      "content_type": 12,
+      "codename": "delete_periodictasks"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view periodic tasks",
+      "content_type": 12,
+      "codename": "view_periodictasks"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add solar event",
+      "content_type": 13,
+      "codename": "add_solarschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change solar event",
+      "content_type": 13,
+      "codename": "change_solarschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete solar event",
+      "content_type": 13,
+      "codename": "delete_solarschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view solar event",
+      "content_type": 13,
+      "codename": "view_solarschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add clocked",
+      "content_type": 14,
+      "codename": "add_clockedschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change clocked",
+      "content_type": 14,
+      "codename": "change_clockedschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete clocked",
+      "content_type": 14,
+      "codename": "delete_clockedschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view clocked",
+      "content_type": 14,
+      "codename": "view_clockedschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add cluster",
+      "content_type": 15,
+      "codename": "add_cluster"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change cluster",
+      "content_type": 15,
+      "codename": "change_cluster"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete cluster",
+      "content_type": 15,
+      "codename": "delete_cluster"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view cluster",
+      "content_type": 15,
+      "codename": "view_cluster"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add data store",
+      "content_type": 16,
+      "codename": "add_datastore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change data store",
+      "content_type": 16,
+      "codename": "change_datastore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete data store",
+      "content_type": 16,
+      "codename": "delete_datastore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view data store",
+      "content_type": 16,
+      "codename": "view_datastore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+      "name": "Can add host",
+      "content_type": 17,
+      "codename": "add_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+      "name": "Can change host",
+      "content_type": 17,
+      "codename": "change_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+      "name": "Can delete host",
+      "content_type": 17,
+      "codename": "delete_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+      "name": "Can view host",
+      "content_type": 17,
+      "codename": "view_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+      "name": "Can add host run time",
+      "content_type": 18,
+      "codename": "add_hostruntime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+      "name": "Can change host run time",
+      "content_type": 18,
+      "codename": "change_hostruntime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+      "name": "Can delete host run time",
+      "content_type": 18,
+      "codename": "delete_hostruntime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+      "name": "Can view host run time",
+      "content_type": 18,
+      "codename": "view_hostruntime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+      "name": "Can add instance",
+      "content_type": 19,
+      "codename": "add_instance"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+      "name": "Can change instance",
+      "content_type": 19,
+      "codename": "change_instance"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+      "name": "Can delete instance",
+      "content_type": 19,
+      "codename": "delete_instance"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+      "name": "Can view instance",
+      "content_type": 19,
+      "codename": "view_instance"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+      "name": "Can add net work",
+      "content_type": 20,
+      "codename": "add_network"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+      "name": "Can change net work",
+      "content_type": 20,
+      "codename": "change_network"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+      "name": "Can delete net work",
+      "content_type": 20,
+      "codename": "delete_network"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+      "name": "Can view net work",
+      "content_type": 20,
+      "codename": "view_network"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+      "name": "Can add net work static",
+      "content_type": 21,
+      "codename": "add_networkstatic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+      "name": "Can change net work static",
+      "content_type": 21,
+      "codename": "change_networkstatic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+      "name": "Can delete net work static",
+      "content_type": 21,
+      "codename": "delete_networkstatic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+      "name": "Can view net work static",
+      "content_type": 21,
+      "codename": "view_networkstatic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+      "name": "Can add run time",
+      "content_type": 22,
+      "codename": "add_runtime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+      "name": "Can change run time",
+      "content_type": 22,
+      "codename": "change_runtime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+      "name": "Can delete run time",
+      "content_type": 22,
+      "codename": "delete_runtime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+      "name": "Can view run time",
+      "content_type": 22,
+      "codename": "view_runtime"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+      "name": "Can add vm",
+      "content_type": 23,
+      "codename": "add_vm"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+      "name": "Can change vm",
+      "content_type": 23,
+      "codename": "change_vm"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+      "name": "Can delete vm",
+      "content_type": 23,
+      "codename": "delete_vm"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+      "name": "Can view vm",
+      "content_type": 23,
+      "codename": "view_vm"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+      "name": "Can add \u8cc7\u7522\u8868",
+      "content_type": 24,
+      "codename": "add_asset"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+      "name": "Can change \u8cc7\u7522\u8868",
+      "content_type": 24,
+      "codename": "change_asset"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+      "name": "Can delete \u8cc7\u7522\u8868",
+      "content_type": 24,
+      "codename": "delete_asset"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+      "name": "Can view \u8cc7\u7522\u8868",
+      "content_type": 24,
+      "codename": "view_asset"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+      "name": "Can add \u6a5f\u623f\u8868",
+      "content_type": 25,
+      "codename": "add_idc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+      "name": "Can change \u6a5f\u623f\u8868",
+      "content_type": 25,
+      "codename": "change_idc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+      "name": "Can delete \u6a5f\u623f\u8868",
+      "content_type": 25,
+      "codename": "delete_idc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+      "name": "Can view \u6a5f\u623f\u8868",
+      "content_type": 25,
+      "codename": "view_idc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 101,
+    "fields": {
+      "name": "Can add ISP",
+      "content_type": 26,
+      "codename": "add_isp"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 102,
+    "fields": {
+      "name": "Can change ISP",
+      "content_type": 26,
+      "codename": "change_isp"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 103,
+    "fields": {
+      "name": "Can delete ISP",
+      "content_type": 26,
+      "codename": "delete_isp"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 104,
+    "fields": {
+      "name": "Can view ISP",
+      "content_type": 26,
+      "codename": "view_isp"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 105,
+    "fields": {
+      "name": "Can add \u7db2\u7d61\u8a2d\u5099",
+      "content_type": 27,
+      "codename": "add_networkdevice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 106,
+    "fields": {
+      "name": "Can change \u7db2\u7d61\u8a2d\u5099",
+      "content_type": 27,
+      "codename": "change_networkdevice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 107,
+    "fields": {
+      "name": "Can delete \u7db2\u7d61\u8a2d\u5099",
+      "content_type": 27,
+      "codename": "delete_networkdevice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 108,
+    "fields": {
+      "name": "Can view \u7db2\u7d61\u8a2d\u5099",
+      "content_type": 27,
+      "codename": "view_networkdevice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 109,
+    "fields": {
+      "name": "Can add \u6a5f\u6ac3\u8868",
+      "content_type": 28,
+      "codename": "add_rack"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 110,
+    "fields": {
+      "name": "Can change \u6a5f\u6ac3\u8868",
+      "content_type": 28,
+      "codename": "change_rack"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 111,
+    "fields": {
+      "name": "Can delete \u6a5f\u6ac3\u8868",
+      "content_type": 28,
+      "codename": "delete_rack"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 112,
+    "fields": {
+      "name": "Can view \u6a5f\u6ac3\u8868",
+      "content_type": 28,
+      "codename": "view_rack"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 113,
+    "fields": {
+      "name": "Can add \u6a5f\u6ac3\u4f7f\u7528\u8868",
+      "content_type": 29,
+      "codename": "add_rackunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 114,
+    "fields": {
+      "name": "Can change \u6a5f\u6ac3\u4f7f\u7528\u8868",
+      "content_type": 29,
+      "codename": "change_rackunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 115,
+    "fields": {
+      "name": "Can delete \u6a5f\u6ac3\u4f7f\u7528\u8868",
+      "content_type": 29,
+      "codename": "delete_rackunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 116,
+    "fields": {
+      "name": "Can view \u6a5f\u6ac3\u4f7f\u7528\u8868",
+      "content_type": 29,
+      "codename": "view_rackunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 117,
+    "fields": {
+      "name": "Can add \u5b58\u5132\u8a2d\u5099",
+      "content_type": 30,
+      "codename": "add_storage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 118,
+    "fields": {
+      "name": "Can change \u5b58\u5132\u8a2d\u5099",
+      "content_type": 30,
+      "codename": "change_storage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 119,
+    "fields": {
+      "name": "Can delete \u5b58\u5132\u8a2d\u5099",
+      "content_type": 30,
+      "codename": "delete_storage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 120,
+    "fields": {
+      "name": "Can view \u5b58\u5132\u8a2d\u5099",
+      "content_type": 30,
+      "codename": "view_storage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 121,
+    "fields": {
+      "name": "Can add \u5b58\u5132\u8a2d\u5099\u63a7\u5236\u5668",
+      "content_type": 31,
+      "codename": "add_storagectl"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 122,
+    "fields": {
+      "name": "Can change \u5b58\u5132\u8a2d\u5099\u63a7\u5236\u5668",
+      "content_type": 31,
+      "codename": "change_storagectl"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 123,
+    "fields": {
+      "name": "Can delete \u5b58\u5132\u8a2d\u5099\u63a7\u5236\u5668",
+      "content_type": 31,
+      "codename": "delete_storagectl"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 124,
+    "fields": {
+      "name": "Can view \u5b58\u5132\u8a2d\u5099\u63a7\u5236\u5668",
+      "content_type": 31,
+      "codename": "view_storagectl"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 125,
+    "fields": {
+      "name": "Can add storage disk",
+      "content_type": 32,
+      "codename": "add_storagedisk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 126,
+    "fields": {
+      "name": "Can change storage disk",
+      "content_type": 32,
+      "codename": "change_storagedisk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 127,
+    "fields": {
+      "name": "Can delete storage disk",
+      "content_type": 32,
+      "codename": "delete_storagedisk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 128,
+    "fields": {
+      "name": "Can view storage disk",
+      "content_type": 32,
+      "codename": "view_storagedisk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 129,
+    "fields": {
+      "name": "Can add \u5b58\u5132\u8a2d\u5099\u7db2\u5361\u8868",
+      "content_type": 33,
+      "codename": "add_storagenic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 130,
+    "fields": {
+      "name": "Can change \u5b58\u5132\u8a2d\u5099\u7db2\u5361\u8868",
+      "content_type": 33,
+      "codename": "change_storagenic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 131,
+    "fields": {
+      "name": "Can delete \u5b58\u5132\u8a2d\u5099\u7db2\u5361\u8868",
+      "content_type": 33,
+      "codename": "delete_storagenic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 132,
+    "fields": {
+      "name": "Can view \u5b58\u5132\u8a2d\u5099\u7db2\u5361\u8868",
+      "content_type": 33,
+      "codename": "view_storagenic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 133,
+    "fields": {
+      "name": "Can add \u6a19\u7c64\u8868",
+      "content_type": 34,
+      "codename": "add_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 134,
+    "fields": {
+      "name": "Can change \u6a19\u7c64\u8868",
+      "content_type": 34,
+      "codename": "change_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 135,
+    "fields": {
+      "name": "Can delete \u6a19\u7c64\u8868",
+      "content_type": 34,
+      "codename": "delete_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 136,
+    "fields": {
+      "name": "Can view \u6a19\u7c64\u8868",
+      "content_type": 34,
+      "codename": "view_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 137,
+    "fields": {
+      "name": "Can add business unit",
+      "content_type": 35,
+      "codename": "add_businessunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 138,
+    "fields": {
+      "name": "Can change business unit",
+      "content_type": 35,
+      "codename": "change_businessunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 139,
+    "fields": {
+      "name": "Can delete business unit",
+      "content_type": 35,
+      "codename": "delete_businessunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 140,
+    "fields": {
+      "name": "Can view business unit",
+      "content_type": 35,
+      "codename": "view_businessunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 141,
+    "fields": {
+      "name": "Can add cmd record",
+      "content_type": 36,
+      "codename": "add_cmdrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 142,
+    "fields": {
+      "name": "Can change cmd record",
+      "content_type": 36,
+      "codename": "change_cmdrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 143,
+    "fields": {
+      "name": "Can delete cmd record",
+      "content_type": 36,
+      "codename": "delete_cmdrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 144,
+    "fields": {
+      "name": "Can view cmd record",
+      "content_type": 36,
+      "codename": "view_cmdrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 145,
+    "fields": {
+      "name": "Can add cpu",
+      "content_type": 37,
+      "codename": "add_cpu"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 146,
+    "fields": {
+      "name": "Can change cpu",
+      "content_type": 37,
+      "codename": "change_cpu"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 147,
+    "fields": {
+      "name": "Can delete cpu",
+      "content_type": 37,
+      "codename": "delete_cpu"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 148,
+    "fields": {
+      "name": "Can view cpu",
+      "content_type": 37,
+      "codename": "view_cpu"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 149,
+    "fields": {
+      "name": "Can add disk",
+      "content_type": 38,
+      "codename": "add_disk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 150,
+    "fields": {
+      "name": "Can change disk",
+      "content_type": 38,
+      "codename": "change_disk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 151,
+    "fields": {
+      "name": "Can delete disk",
+      "content_type": 38,
+      "codename": "delete_disk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 152,
+    "fields": {
+      "name": "Can view disk",
+      "content_type": 38,
+      "codename": "view_disk"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 153,
+    "fields": {
+      "name": "Can add \u670d\u52d9\u5668",
+      "content_type": 39,
+      "codename": "add_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 154,
+    "fields": {
+      "name": "Can change \u670d\u52d9\u5668",
+      "content_type": 39,
+      "codename": "change_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 155,
+    "fields": {
+      "name": "Can delete \u670d\u52d9\u5668",
+      "content_type": 39,
+      "codename": "delete_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 156,
+    "fields": {
+      "name": "Can view \u670d\u52d9\u5668",
+      "content_type": 39,
+      "codename": "view_host"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 157,
+    "fields": {
+      "name": "Can add \u670d\u52d9\u5668\u7db2\u8def\u7aef\u53e3\u8868",
+      "content_type": 40,
+      "codename": "add_hostnet"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 158,
+    "fields": {
+      "name": "Can change \u670d\u52d9\u5668\u7db2\u8def\u7aef\u53e3\u8868",
+      "content_type": 40,
+      "codename": "change_hostnet"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 159,
+    "fields": {
+      "name": "Can delete \u670d\u52d9\u5668\u7db2\u8def\u7aef\u53e3\u8868",
+      "content_type": 40,
+      "codename": "delete_hostnet"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 160,
+    "fields": {
+      "name": "Can view \u670d\u52d9\u5668\u7db2\u8def\u7aef\u53e3\u8868",
+      "content_type": 40,
+      "codename": "view_hostnet"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 161,
+    "fields": {
+      "name": "Can add \u670d\u52d9\u5668\u9032\u7a0b\u8868",
+      "content_type": 41,
+      "codename": "add_hostproc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 162,
+    "fields": {
+      "name": "Can change \u670d\u52d9\u5668\u9032\u7a0b\u8868",
+      "content_type": 41,
+      "codename": "change_hostproc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 163,
+    "fields": {
+      "name": "Can delete \u670d\u52d9\u5668\u9032\u7a0b\u8868",
+      "content_type": 41,
+      "codename": "delete_hostproc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 164,
+    "fields": {
+      "name": "Can view \u670d\u52d9\u5668\u9032\u7a0b\u8868",
+      "content_type": 41,
+      "codename": "view_hostproc"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 165,
+    "fields": {
+      "name": "Can add host record",
+      "content_type": 42,
+      "codename": "add_hostrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 166,
+    "fields": {
+      "name": "Can change host record",
+      "content_type": 42,
+      "codename": "change_hostrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 167,
+    "fields": {
+      "name": "Can delete host record",
+      "content_type": 42,
+      "codename": "delete_hostrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 168,
+    "fields": {
+      "name": "Can view host record",
+      "content_type": 42,
+      "codename": "view_hostrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 169,
+    "fields": {
+      "name": "Can add idrac",
+      "content_type": 43,
+      "codename": "add_idrac"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 170,
+    "fields": {
+      "name": "Can change idrac",
+      "content_type": 43,
+      "codename": "change_idrac"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 171,
+    "fields": {
+      "name": "Can delete idrac",
+      "content_type": 43,
+      "codename": "delete_idrac"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 172,
+    "fields": {
+      "name": "Can view idrac",
+      "content_type": 43,
+      "codename": "view_idrac"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 173,
+    "fields": {
+      "name": "Can add memory",
+      "content_type": 44,
+      "codename": "add_memory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 174,
+    "fields": {
+      "name": "Can change memory",
+      "content_type": 44,
+      "codename": "change_memory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 175,
+    "fields": {
+      "name": "Can delete memory",
+      "content_type": 44,
+      "codename": "delete_memory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 176,
+    "fields": {
+      "name": "Can view memory",
+      "content_type": 44,
+      "codename": "view_memory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 177,
+    "fields": {
+      "name": "Can add net",
+      "content_type": 45,
+      "codename": "add_net"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 178,
+    "fields": {
+      "name": "Can change net",
+      "content_type": 45,
+      "codename": "change_net"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 179,
+    "fields": {
+      "name": "Can delete net",
+      "content_type": 45,
+      "codename": "delete_net"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 180,
+    "fields": {
+      "name": "Can view net",
+      "content_type": 45,
+      "codename": "view_net"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 181,
+    "fields": {
+      "name": "Can add nic",
+      "content_type": 46,
+      "codename": "add_nic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 182,
+    "fields": {
+      "name": "Can change nic",
+      "content_type": 46,
+      "codename": "change_nic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 183,
+    "fields": {
+      "name": "Can delete nic",
+      "content_type": 46,
+      "codename": "delete_nic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 184,
+    "fields": {
+      "name": "Can view nic",
+      "content_type": 46,
+      "codename": "view_nic"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 185,
+    "fields": {
+      "name": "Can add node",
+      "content_type": 47,
+      "codename": "add_node"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 186,
+    "fields": {
+      "name": "Can change node",
+      "content_type": 47,
+      "codename": "change_node"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 187,
+    "fields": {
+      "name": "Can delete node",
+      "content_type": 47,
+      "codename": "delete_node"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 188,
+    "fields": {
+      "name": "Can view node",
+      "content_type": 47,
+      "codename": "view_node"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 189,
+    "fields": {
+      "name": "Can add \u9032\u7a0b\u8868",
+      "content_type": 48,
+      "codename": "add_process"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 190,
+    "fields": {
+      "name": "Can change \u9032\u7a0b\u8868",
+      "content_type": 48,
+      "codename": "change_process"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 191,
+    "fields": {
+      "name": "Can delete \u9032\u7a0b\u8868",
+      "content_type": 48,
+      "codename": "delete_process"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 192,
+    "fields": {
+      "name": "Can view \u9032\u7a0b\u8868",
+      "content_type": 48,
+      "codename": "view_process"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 193,
+    "fields": {
+      "name": "Can add \u57f7\u884c\u7528\u6236",
+      "content_type": 49,
+      "codename": "add_runuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 194,
+    "fields": {
+      "name": "Can change \u57f7\u884c\u7528\u6236",
+      "content_type": 49,
+      "codename": "change_runuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 195,
+    "fields": {
+      "name": "Can delete \u57f7\u884c\u7528\u6236",
+      "content_type": 49,
+      "codename": "delete_runuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 196,
+    "fields": {
+      "name": "Can view \u57f7\u884c\u7528\u6236",
+      "content_type": 49,
+      "codename": "view_runuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 197,
+    "fields": {
+      "name": "Can add task detail",
+      "content_type": 50,
+      "codename": "add_taskdetail"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 198,
+    "fields": {
+      "name": "Can change task detail",
+      "content_type": 50,
+      "codename": "change_taskdetail"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 199,
+    "fields": {
+      "name": "Can delete task detail",
+      "content_type": 50,
+      "codename": "delete_taskdetail"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 200,
+    "fields": {
+      "name": "Can view task detail",
+      "content_type": 50,
+      "codename": "view_taskdetail"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 201,
+    "fields": {
+      "name": "Can add task manual record",
+      "content_type": 51,
+      "codename": "add_taskmanualrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 202,
+    "fields": {
+      "name": "Can change task manual record",
+      "content_type": 51,
+      "codename": "change_taskmanualrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 203,
+    "fields": {
+      "name": "Can delete task manual record",
+      "content_type": 51,
+      "codename": "delete_taskmanualrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 204,
+    "fields": {
+      "name": "Can view task manual record",
+      "content_type": 51,
+      "codename": "view_taskmanualrecord"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 205,
+    "fields": {
+      "name": "Can add \u7528\u6236",
+      "content_type": 52,
+      "codename": "add_userprofile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 206,
+    "fields": {
+      "name": "Can change \u7528\u6236",
+      "content_type": 52,
+      "codename": "change_userprofile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 207,
+    "fields": {
+      "name": "Can delete \u7528\u6236",
+      "content_type": 52,
+      "codename": "delete_userprofile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 208,
+    "fields": {
+      "name": "Can view \u7528\u6236",
+      "content_type": 52,
+      "codename": "view_userprofile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 209,
+    "fields": {
+      "name": "Can add Setting",
+      "content_type": 53,
+      "codename": "add_setting"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 210,
+    "fields": {
+      "name": "Can change Setting",
+      "content_type": 53,
+      "codename": "change_setting"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 211,
+    "fields": {
+      "name": "Can delete Setting",
+      "content_type": 53,
+      "codename": "delete_setting"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 212,
+    "fields": {
+      "name": "Can view Setting",
+      "content_type": 53,
+      "codename": "view_setting"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 213,
+    "fields": {
+      "name": "Can add access key",
+      "content_type": 54,
+      "codename": "add_accesskey"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 214,
+    "fields": {
+      "name": "Can change access key",
+      "content_type": 54,
+      "codename": "change_accesskey"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 215,
+    "fields": {
+      "name": "Can delete access key",
+      "content_type": 54,
+      "codename": "delete_accesskey"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 216,
+    "fields": {
+      "name": "Can view access key",
+      "content_type": 54,
+      "codename": "view_accesskey"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 217,
+    "fields": {
+      "name": "Can add user login log",
+      "content_type": 55,
+      "codename": "add_userloginlog"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 218,
+    "fields": {
+      "name": "Can change user login log",
+      "content_type": 55,
+      "codename": "change_userloginlog"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 219,
+    "fields": {
+      "name": "Can delete user login log",
+      "content_type": 55,
+      "codename": "delete_userloginlog"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 220,
+    "fields": {
+      "name": "Can view user login log",
+      "content_type": 55,
+      "codename": "view_userloginlog"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 221,
+    "fields": {
+      "name": "Can add expiring token",
+      "content_type": 7,
+      "codename": "add_expiringtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 222,
+    "fields": {
+      "name": "Can change expiring token",
+      "content_type": 7,
+      "codename": "change_expiringtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 223,
+    "fields": {
+      "name": "Can delete expiring token",
+      "content_type": 7,
+      "codename": "delete_expiringtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 224,
+    "fields": {
+      "name": "Can view expiring token",
+      "content_type": 7,
+      "codename": "view_expiringtoken"
+    }
+  },
+  {
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+      "domain": "example.com",
+      "name": "example.com"
+    }
+  },
+  {
+    "model": "django_celery_beat.crontabschedule",
+    "pk": 1,
+    "fields": {
+      "minute": "0",
+      "hour": "4",
+      "day_of_week": "*",
+      "day_of_month": "*",
+      "month_of_year": "*",
+      "timezone": "UTC"
+    }
+  },
+  {
+    "model": "django_celery_beat.crontabschedule",
+    "pk": 2,
+    "fields": {
+      "minute": "*/1",
+      "hour": "*",
+      "day_of_week": "*",
+      "day_of_month": "*",
+      "month_of_year": "*",
+      "timezone": "UTC"
+    }
+  },
+  {
+    "model": "django_celery_beat.crontabschedule",
+    "pk": 3,
+    "fields": {
+      "minute": "*/10",
+      "hour": "*",
+      "day_of_week": "*",
+      "day_of_month": "*",
+      "month_of_year": "*",
+      "timezone": "UTC"
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictasks",
+    "pk": 1,
+    "fields": {
+      "last_update": "2020-12-21T09:19:10.896Z"
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictask",
+    "pk": 1,
+    "fields": {
+      "name": "celery.backend_cleanup",
+      "task": "celery.backend_cleanup",
+      "interval": null,
+      "crontab": 1,
+      "solar": null,
+      "clocked": null,
+      "args": "[]",
+      "kwargs": "{}",
+      "queue": null,
+      "exchange": null,
+      "routing_key": null,
+      "headers": "{}",
+      "priority": null,
+      "expires": null,
+      "one_off": false,
+      "start_time": null,
+      "enabled": true,
+      "last_run_at": null,
+      "total_run_count": 0,
+      "date_changed": "2020-12-21T08:27:51.500Z",
+      "description": ""
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictask",
+    "pk": 2,
+    "fields": {
+      "name": "add",
+      "task": "vm.tasks.add",
+      "interval": null,
+      "crontab": 2,
+      "solar": null,
+      "clocked": null,
+      "args": "[3, 4]",
+      "kwargs": "{}",
+      "queue": null,
+      "exchange": null,
+      "routing_key": null,
+      "headers": "{}",
+      "priority": null,
+      "expires": null,
+      "one_off": false,
+      "start_time": null,
+      "enabled": true,
+      "last_run_at": "2020-12-21T08:52:00.017Z",
+      "total_run_count": 25,
+      "date_changed": "2020-12-21T08:52:25.299Z",
+      "description": ""
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictask",
+    "pk": 3,
+    "fields": {
+      "name": "\u5b9a\u671f\u540c\u6b65VM Guest",
+      "task": "vm.tasks.sync_guest",
+      "interval": null,
+      "crontab": 3,
+      "solar": null,
+      "clocked": null,
+      "args": "[]",
+      "kwargs": "{}",
+      "queue": null,
+      "exchange": null,
+      "routing_key": null,
+      "headers": "{}",
+      "priority": null,
+      "expires": null,
+      "one_off": false,
+      "start_time": null,
+      "enabled": true,
+      "last_run_at": "2020-12-21T08:50:00.007Z",
+      "total_run_count": 3,
+      "date_changed": "2020-12-21T08:52:25.260Z",
+      "description": ""
+    }
+  },
+  {
+    "model": "assets.tag",
+    "pk": 1,
+    "fields": {
+      "name": "\u6a19\u7c64A",
+      "remark": ""
+    }
+  },
+  {
+    "model": "assets.tag",
+    "pk": 2,
+    "fields": {
+      "name": "\u6a19\u7c64B",
+      "remark": ""
+    }
+  },
+  {
+    "model": "assets.tag",
+    "pk": 3,
+    "fields": {
+      "name": "\u6a19\u7c64C",
+      "remark": ""
+    }
+  },
+  {
+    "model": "assets.tag",
+    "pk": 4,
+    "fields": {
+      "name": "\u6a19\u7c64D",
+      "remark": ""
+    }
+  },
+  {
+    "model": "assets.tag",
+    "pk": 5,
+    "fields": {
+      "name": "\u6a19\u7c64E",
+      "remark": ""
+    }
+  },
+  {
+    "model": "assets.tag",
+    "pk": 6,
+    "fields": {
+      "name": "\u6a19\u7c64F",
+      "remark": ""
+    }
+  },
+  {
+    "model": "assets.idc",
+    "pk": 1,
+    "fields": {
+      "name": "\u6a5f\u623fA",
+      "floor": 5
+    }
+  },
+  {
+    "model": "assets.idc",
+    "pk": 2,
+    "fields": {
+      "name": "\u6a5f\u623fB",
+      "floor": 8
+    }
+  },
+  {
+    "model": "assets.idc",
+    "pk": 3,
+    "fields": {
+      "name": "\u6a5f\u623fC",
+      "floor": 10
+    }
+  },
+  {
+    "model": "assets.idc",
+    "pk": 4,
+    "fields": {
+      "name": "\u6a5f\u623fD",
+      "floor": 12
+    }
+  },
+  {
+    "model": "assets.rack",
+    "pk": 1,
+    "fields": {
+      "idc": 4,
+      "name": "501",
+      "height": 42,
+      "max_power": 1000,
+      "remark": "",
+      "isp": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "assets.rack",
+    "pk": 2,
+    "fields": {
+      "idc": 2,
+      "name": "801",
+      "height": 42,
+      "max_power": 1000,
+      "remark": "",
+      "isp": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 1,
+    "fields": {
+      "name": 2,
+      "asset": 2,
+      "num": 42,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 2,
+    "fields": {
+      "name": 2,
+      "asset": 1,
+      "num": 41,
+      "position": 2
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 3,
+    "fields": {
+      "name": 2,
+      "asset": 3,
+      "num": 40,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 4,
+    "fields": {
+      "name": 2,
+      "asset": 4,
+      "num": null,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 5,
+    "fields": {
+      "name": 2,
+      "asset": 5,
+      "num": null,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 6,
+    "fields": {
+      "name": 2,
+      "asset": 6,
+      "num": 38,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 7,
+    "fields": {
+      "name": 2,
+      "asset": 7,
+      "num": null,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 8,
+    "fields": {
+      "name": 2,
+      "asset": 8,
+      "num": 36,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.rackunit",
+    "pk": 9,
+    "fields": {
+      "name": 2,
+      "asset": 9,
+      "num": null,
+      "position": 1
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 1,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:29:48.511Z",
+      "create_at": "2020-12-20T16:13:01.710Z",
+      "content_type": 27,
+      "object_id": 1,
+      "size": 1,
+      "name": "ASUS RT-AC88U",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 2,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:29:30.927Z",
+      "create_at": "2020-12-20T16:13:01.730Z",
+      "content_type": 27,
+      "object_id": 2,
+      "size": 1,
+      "name": "Cisco WS-C2960L-24TS-LL",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 3,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:29:54.310Z",
+      "create_at": "2020-12-20T16:13:01.754Z",
+      "content_type": 27,
+      "object_id": 3,
+      "size": 1,
+      "name": "Cisco WS-C2960L-48TS-LL",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 4,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:30:05.025Z",
+      "create_at": "2020-12-20T16:13:01.777Z",
+      "content_type": 27,
+      "object_id": 4,
+      "size": 1,
+      "name": "Dell N1524-24G",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 5,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:30:17.820Z",
+      "create_at": "2020-12-20T16:13:01.801Z",
+      "content_type": 27,
+      "object_id": 5,
+      "size": 1,
+      "name": "DrayTek Vigor2960",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 6,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:30:22.413Z",
+      "create_at": "2020-12-20T16:13:01.825Z",
+      "content_type": 27,
+      "object_id": 6,
+      "size": 2,
+      "name": "HPE 5130-48G",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 7,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:30:27.105Z",
+      "create_at": "2020-12-20T16:13:01.849Z",
+      "content_type": 27,
+      "object_id": 7,
+      "size": 1,
+      "name": "HPE 5130-24G",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 8,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:30:31.888Z",
+      "create_at": "2020-12-20T16:13:01.873Z",
+      "content_type": 27,
+      "object_id": 8,
+      "size": 2,
+      "name": "HPE 5130-48G-PoE",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.asset",
+    "pk": 9,
+    "fields": {
+      "rack": 2,
+      "device_type_id": 2,
+      "device_status_id": 1,
+      "tag": null,
+      "latest_date": "2020-12-21T08:30:36.803Z",
+      "create_at": "2020-12-20T16:13:01.908Z",
+      "content_type": 27,
+      "object_id": 9,
+      "size": 1,
+      "name": "FortiGate-100D",
+      "number": null
+    }
+  },
+  {
+    "model": "assets.isp",
+    "pk": 1,
+    "fields": {
+      "name": "\u7dda\u8defA",
+      "ip_range": "61.64.127.1/24",
+      "netmask": "255.255.255.224",
+      "geteway": "61.64.127.30",
+      "remark": null
+    }
+  },
+  {
+    "model": "assets.isp",
+    "pk": 2,
+    "fields": {
+      "name": "\u7dda\u8defB",
+      "ip_range": "101.101.101.1/24",
+      "netmask": "255.255.255.224",
+      "geteway": "101.101.101.30",
+      "remark": null
+    }
+  },
+  {
+    "model": "assets.isp",
+    "pk": 3,
+    "fields": {
+      "name": "\u7dda\u8defC",
+      "ip_range": "61.68.33.1/24",
+      "netmask": "255.255.255.224",
+      "geteway": "61.68.33.30",
+      "remark": null
+    }
+  },
+  {
+    "model": "assets.isp",
+    "pk": 4,
+    "fields": {
+      "name": "\u7dda\u8defD",
+      "ip_range": "154.221.213.1/24",
+      "netmask": "255.255.255.224",
+      "geteway": "154.221.213.1590",
+      "remark": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 1,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "ASUS RT-AC88U",
+      "manage_ip": "217.233.48.92",
+      "intranet_ip": null,
+      "sn": "c3aded2931d4",
+      "manufactory": "ASUS",
+      "model": "RT-AC88U",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.690Z",
+      "create_date": "2020-12-20T16:13:01.691Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 2,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "Cisco WS-C2960L-24TS-LL",
+      "manage_ip": "190.47.98.45",
+      "intranet_ip": null,
+      "sn": "5664452ca8a1",
+      "manufactory": "Cisco",
+      "model": "WS-C2960L-24TS-LL",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.718Z",
+      "create_date": "2020-12-20T16:13:01.718Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 3,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "Cisco WS-C2960L-48TS-LL",
+      "manage_ip": "188.153.218.5",
+      "intranet_ip": null,
+      "sn": "886ebc330f83",
+      "manufactory": "Cisco",
+      "model": "WS-C2960L-48TS-LL",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.740Z",
+      "create_date": "2020-12-20T16:13:01.740Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 4,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "Dell N1524-24G",
+      "manage_ip": "190.108.222.102",
+      "intranet_ip": null,
+      "sn": "3636cca4f571",
+      "manufactory": "Dell",
+      "model": "N1524-24G",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.763Z",
+      "create_date": "2020-12-20T16:13:01.763Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 5,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "DrayTek Vigor2960",
+      "manage_ip": "112.175.76.26",
+      "intranet_ip": null,
+      "sn": "ac0590bd2cdb",
+      "manufactory": "DrayTek",
+      "model": "Vigor2960",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.785Z",
+      "create_date": "2020-12-20T16:13:01.785Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 6,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "HPE 5130-48G",
+      "manage_ip": "12.8.184.67",
+      "intranet_ip": null,
+      "sn": "1938b39451e3",
+      "manufactory": "HP",
+      "model": "JG934A",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.811Z",
+      "create_date": "2020-12-20T16:13:01.811Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 7,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "HPE 5130-24G",
+      "manage_ip": "116.249.224.75",
+      "intranet_ip": null,
+      "sn": "da1ddfee8185",
+      "manufactory": "HP",
+      "model": "JG933A",
+      "port_num": 24,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.836Z",
+      "create_date": "2020-12-20T16:13:01.836Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 8,
+    "fields": {
+      "sub_asset_type": 1,
+      "name": "HPE 5130-48G-PoE",
+      "manage_ip": "75.149.74.117",
+      "intranet_ip": null,
+      "sn": "f0642848a35f",
+      "manufactory": "HP",
+      "model": "JG941A",
+      "port_num": 48,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.859Z",
+      "create_date": "2020-12-20T16:13:01.859Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "assets.networkdevice",
+    "pk": 9,
+    "fields": {
+      "sub_asset_type": 3,
+      "name": "FortiGate-100D",
+      "manage_ip": "8.47.207.120",
+      "intranet_ip": null,
+      "sn": "15cd1814edcc",
+      "manufactory": "FORTINET",
+      "model": "FG-100D",
+      "port_num": 16,
+      "detail": null,
+      "latest_date": "2020-12-20T16:13:01.888Z",
+      "create_date": "2020-12-20T16:13:01.888Z",
+      "warranty_date": null
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 1,
+    "fields": {
+      "cate": 2,
+      "name": "bai334-web1",
+      "sn": "18c91c40-6597-4196-aa65-b29aa9bafa10",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "162.245.162.165",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:20.617Z",
+      "create_at": "2020-12-20T16:13:20.604Z",
+      "enabled": false,
+      "node": 1,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 400,
+      "total_memory": 8,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 2,
+    "fields": {
+      "cate": 2,
+      "name": "duuu3-web1",
+      "sn": "960969cf-5a1c-451b-872b-80fea0ef0727",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "93.226.58.162",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:20.831Z",
+      "create_at": "2020-12-20T16:13:20.817Z",
+      "enabled": false,
+      "node": 2,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 400,
+      "total_memory": 4,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 3,
+    "fields": {
+      "cate": 2,
+      "name": "ew-web1",
+      "sn": "0036d04e-8aa2-45ed-bee2-656778104e16",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "157.34.165.186",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:20.999Z",
+      "create_at": "2020-12-20T16:13:20.984Z",
+      "enabled": false,
+      "node": 3,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 400,
+      "total_memory": 4,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 4,
+    "fields": {
+      "cate": 2,
+      "name": "c88-web1",
+      "sn": "75259ac7-745d-4b73-a850-1d160017a591",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "222.185.201.53",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:21.179Z",
+      "create_at": "2020-12-20T16:13:21.167Z",
+      "enabled": false,
+      "node": 4,
+      "bus_unit": null,
+      "total_cores": 1,
+      "total_disk": 400,
+      "total_memory": 4,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 5,
+    "fields": {
+      "cate": 2,
+      "name": "c400-web1",
+      "sn": "1b39f4cc-ab30-4298-a217-656485f56fa0",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "205.107.30.159",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:21.392Z",
+      "create_at": "2020-12-20T16:13:21.380Z",
+      "enabled": false,
+      "node": 5,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 100,
+      "total_memory": 4,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 6,
+    "fields": {
+      "cate": 2,
+      "name": "c333-web2",
+      "sn": "264a2c5c-5c19-4fa4-b204-a723673457d5",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "178.70.220.51",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:21.550Z",
+      "create_at": "2020-12-20T16:13:21.541Z",
+      "enabled": false,
+      "node": 6,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 400,
+      "total_memory": 8,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 7,
+    "fields": {
+      "cate": 2,
+      "name": "c67-web1",
+      "sn": "78e09549-ac61-402d-9de9-7a6b6568bf76",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "128.81.223.124",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:21.783Z",
+      "create_at": "2020-12-20T16:13:21.770Z",
+      "enabled": false,
+      "node": 7,
+      "bus_unit": null,
+      "total_cores": 1,
+      "total_disk": 400,
+      "total_memory": 4,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 8,
+    "fields": {
+      "cate": 2,
+      "name": "c56-web2",
+      "sn": "51fff5aa-6af1-47b5-91ba-c324332b43a6",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "193.212.44.58",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:21.955Z",
+      "create_at": "2020-12-20T16:13:21.944Z",
+      "enabled": false,
+      "node": 8,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 100,
+      "total_memory": 8,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 9,
+    "fields": {
+      "cate": 2,
+      "name": "c333-web1",
+      "sn": "117de813-30d8-467d-b59f-1f5392018b49",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "153.129.157.60",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-21T08:36:20.936Z",
+      "create_at": "2020-12-20T16:13:22.087Z",
+      "enabled": true,
+      "node": 6,
+      "bus_unit": null,
+      "total_cores": 1,
+      "total_disk": 100,
+      "total_memory": 4,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.host",
+    "pk": 10,
+    "fields": {
+      "cate": 2,
+      "name": "r3-web2",
+      "sn": "e33d2d6c-2724-4351-8f14-1862b6bbfef0",
+      "manufacturer": "",
+      "model": null,
+      "manage_ip": "163.140.246.155",
+      "os_distribution": "",
+      "os_platform": "",
+      "os_version": "",
+      "latest_date": "2020-12-20T16:13:22.248Z",
+      "create_at": "2020-12-20T16:13:22.227Z",
+      "enabled": false,
+      "node": 9,
+      "bus_unit": null,
+      "total_cores": 2,
+      "total_disk": 400,
+      "total_memory": 8,
+      "manage_ssh": "22"
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 1,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 1
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 2,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 1
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 3,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 2
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 4,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 2
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 5,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 3
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 6,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 3
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 7,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 4
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 8,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 5
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 9,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 5
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 10,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 6
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 11,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 6
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 12,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 7
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 13,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 8
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 14,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 8
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 15,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 9
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 16,
+    "fields": {
+      "slot": "CPU 0",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 10
+    }
+  },
+  {
+    "model": "hosts.cpu",
+    "pk": 17,
+    "fields": {
+      "slot": "CPU 1",
+      "manufacturer": "Intel Corp.",
+      "model": "Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz",
+      "cores": 1,
+      "threads": 2,
+      "host_obj": 10
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 1,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "162.245.162.165",
+      "model": "",
+      "macaddress": "52:54:00:59:1c:17",
+      "netmask": "",
+      "host_obj": 1
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 2,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "93.226.58.162",
+      "model": "",
+      "macaddress": "52:54:00:47:23:27",
+      "netmask": "",
+      "host_obj": 2
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 3,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "157.34.165.186",
+      "model": "",
+      "macaddress": "52:54:00:6c:df:bf",
+      "netmask": "",
+      "host_obj": 3
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 4,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "222.185.201.53",
+      "model": "",
+      "macaddress": "52:54:00:58:1d:cb",
+      "netmask": "",
+      "host_obj": 4
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 5,
+    "fields": {
+      "name": "eth1",
+      "ipaddress": "151.106.251.159",
+      "model": "",
+      "macaddress": "52:54:00:6d:33:ae",
+      "netmask": "",
+      "host_obj": 4
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 6,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "205.107.30.159",
+      "model": "",
+      "macaddress": "52:54:00:5c:5e:e0",
+      "netmask": "",
+      "host_obj": 5
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 7,
+    "fields": {
+      "name": "eth1",
+      "ipaddress": "39.166.75.75",
+      "model": "",
+      "macaddress": "52:54:00:12:26:99",
+      "netmask": "",
+      "host_obj": 5
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 8,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "178.70.220.51",
+      "model": "",
+      "macaddress": "52:54:00:44:b1:41",
+      "netmask": "",
+      "host_obj": 6
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 9,
+    "fields": {
+      "name": "eth1",
+      "ipaddress": "248.133.165.244",
+      "model": "",
+      "macaddress": "52:54:00:44:6d:d5",
+      "netmask": "",
+      "host_obj": 6
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 10,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "128.81.223.124",
+      "model": "",
+      "macaddress": "52:54:00:4a:dc:8b",
+      "netmask": "",
+      "host_obj": 7
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 11,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "193.212.44.58",
+      "model": "",
+      "macaddress": "52:54:00:11:d1:ec",
+      "netmask": "",
+      "host_obj": 8
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 12,
+    "fields": {
+      "name": "eth1",
+      "ipaddress": "141.231.245.22",
+      "model": "",
+      "macaddress": "52:54:00:51:c1:09",
+      "netmask": "",
+      "host_obj": 8
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 13,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "153.129.157.60",
+      "model": "",
+      "macaddress": "52:54:00:23:df:6a",
+      "netmask": "",
+      "host_obj": 9
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 14,
+    "fields": {
+      "name": "eth0",
+      "ipaddress": "163.140.246.155",
+      "model": "",
+      "macaddress": "52:54:00:58:f5:48",
+      "netmask": "",
+      "host_obj": 10
+    }
+  },
+  {
+    "model": "hosts.nic",
+    "pk": 15,
+    "fields": {
+      "name": "eth1",
+      "ipaddress": "107.125.40.35",
+      "model": "",
+      "macaddress": "52:54:00:05:41:4e",
+      "netmask": "",
+      "host_obj": 10
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 1,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 1,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 2,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 1,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 3,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 1,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 4,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 1,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 5,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 2,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 6,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 2,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 7,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 2,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 8,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 2,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 9,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 3,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 10,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 3,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 11,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 3,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 12,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 3,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 13,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 4,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 14,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 4,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 15,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 4,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 16,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 4,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 17,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 5,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 18,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 6,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 19,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 6,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 20,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 6,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 21,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 6,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 22,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 7,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 23,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 7,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 24,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 7,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 25,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 7,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 26,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 8,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 27,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 9,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 28,
+    "fields": {
+      "slot": "/dev/vda",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 10,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 29,
+    "fields": {
+      "slot": "/dev/vdb",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 10,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 30,
+    "fields": {
+      "slot": "/dev/vdc",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 10,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.disk",
+    "pk": 31,
+    "fields": {
+      "slot": "/dev/vdd",
+      "model": "Virtual I/O device",
+      "capacity": 100.0,
+      "host_obj": 10,
+      "sn": "",
+      "manufacturer": "",
+      "iface_type": "virtio"
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 1,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 1
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 2,
+    "fields": {
+      "slot": "DIMM 1",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 1
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 3,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 2
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 4,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 3
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 5,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 4
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 6,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 5
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 7,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 6
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 8,
+    "fields": {
+      "slot": "DIMM 1",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 6
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 9,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 7
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 10,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 8
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 11,
+    "fields": {
+      "slot": "DIMM 1",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 8
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 12,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 9
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 13,
+    "fields": {
+      "slot": "DIMM 0",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 10
+    }
+  },
+  {
+    "model": "hosts.memory",
+    "pk": 14,
+    "fields": {
+      "slot": "DIMM 1",
+      "manufacturer": "Alibaba Cloud",
+      "model": "",
+      "capacity": 4.0,
+      "sn": "",
+      "host_obj": 10
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 1,
+    "fields": {
+      "host_obj": 1,
+      "title": "\u65b0\u589e bai334-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u65b0\u589e DIMM 1 4\n\u7db2\u5361:\n\u65b0\u589e eth0 162.245.162.165\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:20.785Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 2,
+    "fields": {
+      "host_obj": 2,
+      "title": "\u65b0\u589e duuu3-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u7db2\u5361:\n\u65b0\u589e eth0 93.226.58.162\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:20.950Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 3,
+    "fields": {
+      "host_obj": 3,
+      "title": "\u65b0\u589e ew-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u7db2\u5361:\n\u65b0\u589e eth0 157.34.165.186\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:21.134Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 4,
+    "fields": {
+      "host_obj": 4,
+      "title": "\u65b0\u589e c88-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u7db2\u5361:\n\u65b0\u589e eth0 222.185.201.53\n\u65b0\u589e eth1 151.106.251.159\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1",
+      "create_date": "2020-12-20T16:13:21.347Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 5,
+    "fields": {
+      "host_obj": 5,
+      "title": "\u65b0\u589e c400-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u7db2\u5361:\n\u65b0\u589e eth0 205.107.30.159\n\u65b0\u589e eth1 39.166.75.75\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:21.514Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 6,
+    "fields": {
+      "host_obj": 6,
+      "title": "\u65b0\u589e c333-web2",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u65b0\u589e DIMM 1 4\n\u7db2\u5361:\n\u65b0\u589e eth0 178.70.220.51\n\u65b0\u589e eth1 248.133.165.244\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:21.736Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 7,
+    "fields": {
+      "host_obj": 7,
+      "title": "\u65b0\u589e c67-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u7db2\u5361:\n\u65b0\u589e eth0 128.81.223.124\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1",
+      "create_date": "2020-12-20T16:13:21.905Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 8,
+    "fields": {
+      "host_obj": 8,
+      "title": "\u65b0\u589e c56-web2",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u65b0\u589e DIMM 1 4\n\u7db2\u5361:\n\u65b0\u589e eth0 193.212.44.58\n\u65b0\u589e eth1 141.231.245.22\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:22.069Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 9,
+    "fields": {
+      "host_obj": 9,
+      "title": "\u65b0\u589e c333-web1",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u7db2\u5361:\n\u65b0\u589e eth0 153.129.157.60\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\nCPU:\n\u65b0\u589e CPU 0 1",
+      "create_date": "2020-12-20T16:13:22.189Z"
+    }
+  },
+  {
+    "model": "hosts.hostrecord",
+    "pk": 10,
+    "fields": {
+      "host_obj": 10,
+      "title": "\u65b0\u589e r3-web2",
+      "summary": "\u5167\u5b58:\n\u65b0\u589e DIMM 0 4\n\u65b0\u589e DIMM 1 4\n\u7db2\u5361:\n\u65b0\u589e eth0 163.140.246.155\n\u65b0\u589e eth1 107.125.40.35\n\u786c\u76e4:\n\u65b0\u589e /dev/vda 100\n\u65b0\u589e /dev/vdb 100\n\u65b0\u589e /dev/vdc 100\n\u65b0\u589e /dev/vdd 100\nCPU:\n\u65b0\u589e CPU 0 1\n\u65b0\u589e CPU 1 1",
+      "create_date": "2020-12-20T16:13:22.435Z"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 1,
+    "fields": {
+      "name": "bai334"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 2,
+    "fields": {
+      "name": "duuu3"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 3,
+    "fields": {
+      "name": "ew"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 4,
+    "fields": {
+      "name": "c88"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 5,
+    "fields": {
+      "name": "c400"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 6,
+    "fields": {
+      "name": "c333"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 7,
+    "fields": {
+      "name": "c67"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 8,
+    "fields": {
+      "name": "c56"
+    }
+  },
+  {
+    "model": "hosts.node",
+    "pk": 9,
+    "fields": {
+      "name": "r3"
+    }
+  },
+  {
+    "model": "common.userprofile",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$120000$r4AcX0S80bRq$B5TtgjZkD7dGOIzc7/2WU1lrFytG2dTnztR+CFzskZo=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@gamil.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-12-20T16:13:41.184Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authentication.userloginlog",
+    "pk": "0f2757af-3d78-44e2-a617-b09ff21c0ec3",
+    "fields": {
+      "username": "admin",
+      "type": "W",
+      "ip": "127.0.0.1",
+      "city": "\u672c\u673a\u5730\u5740",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0) Gecko/20100101 Firefox/84.0",
+      "reason": 0,
+      "status": true,
+      "datetime": "2020-12-20T16:13:52.061Z"
+    }
+  },
+  {
+    "model": "authentication.userloginlog",
+    "pk": "baa1f208-f818-464e-8095-2ce132cd6e6e",
+    "fields": {
+      "username": "admin",
+      "type": "W",
+      "ip": "127.0.0.1",
+      "city": "\u672c\u673a\u5730\u5740",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+      "reason": 0,
+      "status": true,
+      "datetime": "2020-12-21T08:26:53.494Z"
+    }
+  },
+  {
+    "model": "authtoken.token",
+    "pk": "4ce67d6d3df5acd6dc1771c09c6753ab989eb763",
+    "fields": {
+      "user": 1,
+      "created": "2020-12-20T16:13:52.047Z"
+    }
+  }
+]

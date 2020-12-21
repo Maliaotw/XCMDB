@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# N.B. If only .env files supported variable expansion...
+export CELERY_BROKER_URL="${REDIS_URL}"
+
+mysql_ready() {
+python << END
+
+import sys
+import pymysql
+
+try:
+    db = pymysql.connect(
+          host="${DB_HOST}",
+          user="${MYSQL_USER}",
+          passwd="${MYSQL_ROOT_PASSWORD}",
+          db="${MYSQL_DATABASE}",
+          charset='utf8'
+    )
+except pymysql.err.OperationalError as e:
+    sys.exit(-1)
+
+sys.exit(0)
+
+END
+}
+until mysql_ready; do
+  >&2 echo 'Waiting for MySQL to become available...'
+  sleep 1
+done
+>&2 echo 'MySQL is available'
+
+exec "$@"

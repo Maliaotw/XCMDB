@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+python /app/cmdb/manage.py makemigrations
+python /app/cmdb/manage.py migrate
+python /app/cmdb/manage.py collectstatic --noinput
+
+python /app/cmdb/manage.py loaddata /app/files/db.json
+
+/usr/local/bin/gunicorn cmdb.wsgi --timeout 300 --bind 0.0.0.0:5000 --chdir=/app/cmdb

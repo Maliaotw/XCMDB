@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+rm -f './celerybeat.pid'
+celery -A cmdb beat -l INFO --workdir=/app/cmdb

@@ -1,0 +1,72 @@
+version: "3"
+
+
+services:
+  openresty:
+    build:
+      context: .
+      dockerfile: ./compose/openresty/Dockerfile
+    volumes:
+      - ./logs/nginx:/var/log/nginx
+    ports:
+    - 80:80
+
+  web:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    restart: always
+    env_file:
+      - ./backend/.example.env
+    depends_on:
+      - mysql
+      - redis
+      - openresty
+    volumes:
+      - ./backend/files:/app/files
+      - ./backend/data/static:/app/data/static
+      - ./logs/backend:/app/logs
+      - ./backend/cmdb/migrations:/app/web/app/migrations
+    command: /start
+
+  celery:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    restart: always
+    env_file:
+      - ./backend/.example.env
+    depends_on:
+      - mysql
+      - redis
+      - web
+    command: /start-celeryworker
+
+  beat:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    restart: always
+    env_file:
+      - ./backend/.example.env
+    depends_on:
+      - mysql
+      - redis
+      - web
+    command: /start-celerybeat
+
+
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - ./backend/.example.env
+    command: ["--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci"]
+
+
+  redis:
+    image: redis:5.0
+
+networks:
+  default:
+    external:
+      name: cmdb

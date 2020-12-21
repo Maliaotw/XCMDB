@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+*.md
+*.env
+*.log
+docker-compose-dev.yml
+node_modules
+lina
+dist
