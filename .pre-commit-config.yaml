@@ -1,0 +1,47 @@
+# pre-commit hooks for XCMDB
+# Auto-lint before every commit: ruff format + ruff check + mypy + eslint
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: backend/
+      - id: ruff-format
+        files: backend/
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.0
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v1.1.0
+    hooks:
+      - id: eslint
+        files: frontend/src
+        additional_dependencies:
+          - eslint@8.56.0
+          - eslint-config-airbnb-base@15.0.0
+          - eslint-plugin-import@2.29.1
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-json
+      - id: check-merge-conflict
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.14.0
+    hooks:
+      - id: mypy
+        files: backend/cmdb|backend/tasks|backend/common
+        additional_dependencies:
+          - types-requests
+          - mypy-django-plugin
+        args: [--config-file, ../backend/pyproject.toml]

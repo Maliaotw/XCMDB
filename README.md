@@ -4,7 +4,7 @@
 
 ## 專案概述
 
-XCMDB是一個資產管理系統，主要用於管理IT基礎設施資源，包括實體伺服器、虛擬機、機房和機櫃等。系統支持定期採集ESXI和vsphere資源信息，並提供IDC（互聯網數據中心）管理功能。
+XCMDB是一個資產管理系統，主要用於管理IT基礎設施資源，包括實體伺服器、虛擬機、機房和機櫃等。系統支持定期採集ESXI和vsphere資源信息，並提供IDC（網際網路數據中心）管理功能。
 
 ## 開發語言與框架
 
@@ -28,11 +28,11 @@ XCMDB是一個資產管理系統，主要用於管理IT基礎設施資源，包�
 ```
 ansible/        # 用於推送腳本
 client/         # 虛擬機資產回報agent
-backend/        # 後台服務端
+backend/        # 後臺服務端
   cmdb/         # Django應用
   files/        # 文件存儲
   utils/        # 工具函數
-frontend/       # 前台服務端 (Vue.js)
+frontend/       # 前臺服務端 (Vue.js)
 compose/        # Docker配置
   django/       # Django服務配置
   openresty/    # Openresty服務配置
@@ -46,17 +46,40 @@ openresty/      # Openresty配置
 
 ## 部署說明
 
-### 開發環境
+### 本地開發一鍵啟動與 Port 規劃 (極速推薦)
+
+為了簡化環境搭建並防範與本地現有服務的埠衝突（例如其他 Django 的 `8000` 或 Vue 的 `9528`），本專案支持 `Makefile` 一鍵快速安裝與並行啟動：
+
+#### 一鍵快速初始化
+在專案根目錄下直接執行：
+```bash
+# 1. 一鍵安裝前後端依賴，並完成資料庫初始化與 Demo 數據富化
+make install
+
+# 2. 一鍵並行啟動 Django API、Vue UI 與 Celery Worker 開發服務
+make dev
+```
+
+#### 本地開發 Port 規劃
+
+| 服務模組 | 預設 Port | 本地開發 Port | 防衝突設計與說明 |
+| :--- | :--- | :--- | :--- |
+| **OpenResty (Nginx)** | `80` | **`8080`** | [docker-compose-dev.yml](file:///Users/maliao.kuo/PycharmProjects/XCMDB/docker-compose-dev.yml)。本地 Nginx 代理存取 |
+| **Django 後端 API** | `8000` | **`18000`** | [backend/.dev.env](file:///Users/maliao.kuo/PycharmProjects/XCMDB/backend/.dev.env) 與 [Makefile](file:///Users/maliao.kuo/PycharmProjects/XCMDB/Makefile)。避免與預設的 8000 埠衝突 |
+| **Vue 前端 Web** | `9528` | **`19528`** | [Makefile](file:///Users/maliao.kuo/PycharmProjects/XCMDB/Makefile) 與 [vue.config.js](file:///Users/maliao.kuo/PycharmProjects/XCMDB/frontend/vue.config.js) (預設埠) |
+
+* 前端開發環境配置文件 [frontend/.env.development](file:///Users/maliao.kuo/PycharmProjects/XCMDB/frontend/.env.development) 中的 `VUE_APP_CORE_HOST` 已經對應調整為後端 Port `http://127.0.0.1:18000`。
+* 虛擬機部署所使用的 WebSocket 端點已在 [vm.vue](file:///Users/maliao.kuo/PycharmProjects/XCMDB/frontend/src/views/VM/vm.vue) 中改為自動適應 Host，移除硬編碼。
+* 前端已在 [Makefile](file:///Users/maliao.kuo/PycharmProjects/XCMDB/Makefile) 配置 `NODE_OPTIONS=--openssl-legacy-provider` 以解決 Node 17+ (如 Node v26) 下 OpenSSL v3 造成 Webpack 構建崩潰的問題。
+
+### 傳統 Docker 部署 (開發環境)
 
 ```bash
 # 創建網絡
 docker network create cmdb
 
-# 啟動服務
+# 啟動開發環境服務
 docker-compose -f docker-compose-dev.yml up -d
-
-# 重新載入Nginx配置
-docker-compose -f docker-compose-dev.yml exec openresty bash -c "nginx -s reload"
 ```
 
 ### 生產環境
@@ -288,17 +311,17 @@ server {
    - 確保使用的Node.js版本與項目兼容
 
 2. 開發服務器啟動問題：
-   - 確保端口9528未被佔用
+   - 確保埠9528未被佔用
    - 檢查環境變數配置是否正確
 
 3. 構建問題：
-   - 如果構建時出現錯誤，檢查控制台輸出以獲取詳細信息
+   - 如果構建時出現錯誤，檢查控制臺輸出以獲取詳細信息
    - 確保所有依賴都已正確安裝
 
 4. 與後端通信問題：
    - 確保後端服務正在運行
    - 檢查API代理配置是否正確
-   - 檢查瀏覽器控制台是否有CORS錯誤
+   - 檢查瀏覽器控制臺是否有CORS錯誤
 
 ## 環境配置
 
