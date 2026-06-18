@@ -1,30 +1,27 @@
-from django.shortcuts import render, HttpResponse
-
 # 引入drf功能模塊
-
-from rest_framework import viewsets
-from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.views import APIView, Response
-
-# model
-from hosts import models
-from assets import models as assets_models
-# 引入序列化
-from hosts import serializers
-
-from django_filters import rest_framework as filters
 
 import inspect
 import logging
 
 import django_filters
+from django_filters import rest_framework as filters
+from rest_framework import viewsets
+from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.pagination import LimitOffsetPagination
+
+from authentication.backends.api import IsAdminOrReadOnly
+
+# model
+# 引入序列化
+from hosts import models, serializers
 
 
 # BusUnit
 class BusUnitModelViewSet(viewsets.ModelViewSet):
-    '''
+    """
     BusUnit 序列化
-    '''
+    """
+
     queryset = models.BusinessUnit.objects.all()
     serializer_class = serializers.BusUnitListSerializer
     pagination_class = LimitOffsetPagination
@@ -32,32 +29,35 @@ class BusUnitModelViewSet(viewsets.ModelViewSet):
 
 # Host
 class HostFilter(filters.FilterSet):
-    name = filters.CharFilter(lookup_expr='contains')
+    name = filters.CharFilter(lookup_expr="contains")
     node = filters.CharFilter(method="filter_node")
 
     def filter_node(self, queryset, name, value):
         return queryset.filter(node__name=value)
 
-
     class Meta:
         model = models.Host
-        fields = ('name', 'enabled')
+        fields = ("name", "enabled")
 
 
 class HostModelViewSet(viewsets.ModelViewSet):
-    '''
+    """
     Host 序列化
-    '''
+    """
 
     queryset = models.Host.objects.filter(cate=2)
     serializer_class = serializers.HostListSerializer
     pagination_class = LimitOffsetPagination
+    filter_backends = (filters.DjangoFilterBackend, SearchFilter, OrderingFilter)
     filterset_class = HostFilter
+    search_fields = ("name", "manage_ip", "sn")
+    ordering_fields = ("create_at", "name")
+    permission_classes = [IsAdminOrReadOnly]
 
     def get_serializer_class(self):
-        logging.debug("%s %s" % (self.__class__.__name__, inspect.stack()[0][3]))
+        logging.debug(f"{self.__class__.__name__} {inspect.stack()[0][3]}")
 
-        if self.action == 'list':
+        if self.action == "list":
             return serializers.HostListSerializer
         return serializers.HostSerializer
 
@@ -72,16 +72,16 @@ class HostModelViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         response = super().list(request, *args, **kwargs)
-        response.data['node'] = serializers.NodeListSerializer(models.Node.objects.all(),many=True).data
+        if isinstance(response.data, dict):
+            response.data["node"] = serializers.NodeListSerializer(models.Node.objects.all(), many=True).data
         return response
-
 
 
 # Instance
 class InstanceModelViewSet(viewsets.ModelViewSet):
-    '''
+    """
     Instance 序列化
-    '''
+    """
 
     queryset = models.Host.objects.filter(cate=1)
     serializer_class = serializers.HostListSerializer
@@ -89,23 +89,24 @@ class InstanceModelViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         # print(self.action)
-        if self.action == 'list':
+        if self.action == "list":
             return serializers.HostListSerializer
         return serializers.HostSerializer
 
 
 # Node
 class NodeModelViewSet(viewsets.ModelViewSet):
-    '''
+    """
     Node 序列化
-    '''
+    """
+
     queryset = models.Node.objects.all()
     serializer_class = serializers.NodeListSerializer
     pagination_class = LimitOffsetPagination
 
 
 class HostRecordFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(label='name', method='filter_name')
+    name = django_filters.CharFilter(label="name", method="filter_name")
 
     def filter_name(self, queryset, name, value):
         # print(queryset.filter(host_obj__name=value))
@@ -113,31 +114,37 @@ class HostRecordFilter(django_filters.FilterSet):
 
     class Meta:
         model = models.HostRecord
-        fields = ('id',)
+        fields = ("id",)
 
 
 # HostRecord
 class HostRecordViewSet(viewsets.ModelViewSet):
-    '''
+    """
     HostRecord 序列化
-    '''
+    """
+
     queryset = models.HostRecord.objects.all()
     serializer_class = serializers.HostRecordListSerializer
     pagination_class = LimitOffsetPagination
     # filterset_class = HostRecordFilter
-    filterset_fields = ['host_obj']
+    filterset_fields = ["host_obj"]
 
 
 class IdracViewSet(viewsets.ModelViewSet):
     """
     iDRAC 序列化
     """
+
     queryset = models.IDRAC.objects.all()
     serializer_class = serializers.IDRACListSerializer
     pagination_class = LimitOffsetPagination
+    filter_backends = (filters.DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filterset_fields = ("port",)
+    search_fields = ("idrac_ip",)
+    ordering_fields = ("idrac_ip",)
 
     def get_serializer_class(self):
-        if self.action == 'list':
+        if self.action == "list":
             return serializers.IDRACListSerializer
         return serializers.IDRACSerializer
 
@@ -153,18 +160,20 @@ class IdracViewSet(viewsets.ModelViewSet):
 
 
 class CmdRecordViewSet(viewsets.ModelViewSet):
-    '''
+    """
     CmdRecord 序列化
-    '''
+    """
+
     queryset = models.CmdRecord.objects.all()
     serializer_class = serializers.CmdRecordListSerializer
     pagination_class = LimitOffsetPagination
 
 
 class RunUserViewSet(viewsets.ModelViewSet):
-    '''
+    """
     RunUser 序列化
-    '''
+    """
+
     queryset = models.RunUser.objects.all()
     serializer_class = serializers.RunUserListSerializer
     pagination_class = LimitOffsetPagination
@@ -172,9 +181,10 @@ class RunUserViewSet(viewsets.ModelViewSet):
 
 # Process
 class ProcessViewSet(viewsets.ModelViewSet):
-    '''
+    """
     Process 序列化
-    '''
+    """
+
     queryset = models.Process.objects.all()
     serializer_class = serializers.ProcessListSerializer
     pagination_class = LimitOffsetPagination
@@ -182,9 +192,10 @@ class ProcessViewSet(viewsets.ModelViewSet):
 
 # HostProc
 class HostProcViewSet(viewsets.ModelViewSet):
-    '''
+    """
     HostProc 序列化
-    '''
+    """
+
     queryset = models.HostProc.objects.all()
     serializer_class = serializers.HostProcListSerializer
     pagination_class = LimitOffsetPagination

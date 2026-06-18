@@ -1,7 +1,8 @@
-from .base import Terraform
-from shutil import copyfile
-import os
 import json
+import os
+from shutil import copyfile
+
+from .base import Terraform
 
 
 class Create(Terraform):
@@ -17,20 +18,20 @@ class Create(Terraform):
         self._main()
 
     def data(self, vars):
-        js = os.path.join(self.path['conf'], 'terraform_example.tfvars.json')
-        data = json.load(open(js, 'r'))
+        js = os.path.join(self.path["conf"], "terraform_example.tfvars.json")
+        data = json.load(open(js))
 
         data.update(vars)
 
         # data['hostname'] = self.hostname
         # data['ipaddress'] = self.ipaddress
-        tfvars_json = open(os.path.join(self.path['host'], 'terraform.tfvars.json'), 'w')
+        tfvars_json = open(os.path.join(self.path["host"], "terraform.tfvars.json"), "w")
         json.dump(data, tfvars_json)
         tfvars_json.close()
 
     def copyfile(self):
-        for file in ['main.tf', 'variables.tf']:
-            copyfile(os.path.join(self.path['conf'], file), os.path.join(self.path['host'], file))
+        for file in ["main.tf", "variables.tf"]:
+            copyfile(os.path.join(self.path["conf"], file), os.path.join(self.path["host"], file))
 
 
 class CustomIPCreate(Create):

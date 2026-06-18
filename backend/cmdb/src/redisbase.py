@@ -2,14 +2,14 @@ import redis
 from django.conf import settings
 
 
-class RedisQueue(object):
+class RedisQueue:
     """Simple Queue with Redis Backend"""
 
-    def __init__(self, name, namespace='queue', **redis_kwargs):
+    def __init__(self, name, namespace="queue", **redis_kwargs):
         """The default connection parameters are: host='localhost', port=6379, db=0"""
         pool = redis.ConnectionPool(**settings.REDIS_HOST)
-        self.__db= redis.Redis(connection_pool=pool)
-        self.key = '%s:%s' %(namespace, name)
+        self.__db = redis.Redis(connection_pool=pool)
+        self.key = f"{namespace}:{name}"
 
     def qsize(self):
         """Return the approximate size of the queue."""
@@ -42,9 +42,8 @@ class RedisQueue(object):
         return self.get(False)
 
 
-if __name__ == '__main__':
-    q = RedisQueue('tgmsg')
-    q.put('hello world')
+if __name__ == "__main__":
+    q = RedisQueue("tgmsg")
+    q.put("hello world")
     q.qsize()
     q.get(timeout=1)
-

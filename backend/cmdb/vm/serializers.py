@@ -1,44 +1,47 @@
+import inspect
+import ipaddress
+import logging
+
 from rest_framework import serializers
 
 from . import models
-import inspect
-import logging
 
-import ipaddress
 
 class NetWorkStaticListSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetWork
-    '''
+    """
 
     class Meta:
         model = models.NetWorkStatic
         fields = "__all__"
+
 
 class NetWorkStaticSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetWork
-    '''
+    """
 
     class Meta:
         model = models.NetWorkStatic
         fields = "__all__"
 
+
 class NetWorkStaticUpdateSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetWork
-    '''
+    """
 
     class Meta:
         model = models.NetWorkStatic
         # fields = "__all__"
-        exclude = ['id']
+        exclude = ["id"]
 
 
 class NetWorkListSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetWork
-    '''
+    """
 
     class Meta:
         model = models.NetWork
@@ -46,9 +49,9 @@ class NetWorkListSerializer(serializers.ModelSerializer):
 
 
 class DatastoreListSerializer(serializers.ModelSerializer):
-    '''
+    """
     Datastore
-    '''
+    """
 
     capacity = serializers.SerializerMethodField()
     freeSpace = serializers.SerializerMethodField()
@@ -56,10 +59,10 @@ class DatastoreListSerializer(serializers.ModelSerializer):
 
     def size(self, _capacity):
         capacity = _capacity
-        for unit in ['KB', 'MB', 'GB', 'TB']:
+        for unit in ["KB", "MB", "GB", "TB"]:
             capacity = capacity / 1024
             if capacity < 1000:
-                return "%s %s" % (round(capacity, 2), unit)
+                return f"{round(capacity, 2)} {unit}"
 
     def get_capacity(self, obj):
         return self.size(obj.capacity)
@@ -76,9 +79,9 @@ class DatastoreListSerializer(serializers.ModelSerializer):
 
 
 class InstanceSerializer(serializers.ModelSerializer):
-    '''
+    """
     Instance
-    '''
+    """
 
     class Meta:
         model = models.Instance
@@ -87,18 +90,18 @@ class InstanceSerializer(serializers.ModelSerializer):
 
 
 class InstanceListSerializer(serializers.ModelSerializer):
-    '''
+    """
     Instance
-    '''
+    """
 
-    hw_power_status = serializers.CharField(source='get_hw_power_status_display')
+    hw_power_status = serializers.CharField(source="get_hw_power_status_display")
     info = serializers.SerializerMethodField()
-    host = serializers.CharField(source='host.name', read_only=True)
+    host = serializers.CharField(source="host.name", read_only=True)
     network = NetWorkListSerializer()
     datastore = DatastoreListSerializer()
 
     def get_info(self, obj):
-        return "{}CPU {}G {}G".format(obj.hw_processor_count, obj.hw_memtotal_mb / 1024, obj.capacity)
+        return f"{obj.hw_processor_count}CPU {obj.hw_memtotal_mb / 1024}G {obj.capacity}G"
 
     class Meta:
         model = models.Instance
@@ -106,12 +109,12 @@ class InstanceListSerializer(serializers.ModelSerializer):
 
 
 class NetWorkSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetWork
-    '''
+    """
 
     def validate_iprange(self, value):
-        logging.debug("%s %s" % (self.__class__.__name__, inspect.stack()[0][3]))
+        logging.debug(f"{self.__class__.__name__} {inspect.stack()[0][3]}")
 
         # iprange = self.initial_data['iprange']
         self.iprange_obj = ipaddress.ip_network(value, strict=False)
@@ -121,7 +124,7 @@ class NetWorkSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("IP範圍錯誤")
 
     def validate_gateway(self, value):
-        logging.debug("%s %s" % (self.__class__.__name__, inspect.stack()[0][3]))
+        logging.debug(f"{self.__class__.__name__} {inspect.stack()[0][3]}")
 
         # gateway = self.initial_data['gateway']
         if ipaddress.IPv4Address(value) in self.iprange_obj:
@@ -133,9 +136,7 @@ class NetWorkSerializer(serializers.ModelSerializer):
         """
         Check that start is before finish.
         """
-        data.update({
-            "total": len(list(self.iprange_obj.hosts())) - 1
-        })
+        data.update({"total": len(list(self.iprange_obj.hosts())) - 1})
         return data
 
     class Meta:
@@ -144,9 +145,9 @@ class NetWorkSerializer(serializers.ModelSerializer):
 
 
 class HostCreatrListSerializer(serializers.ModelSerializer):
-    '''
+    """
     Host
-    '''
+    """
 
     datastore = serializers.SerializerMethodField()
     # template = serializers.SerializerMethodField()
@@ -154,6 +155,7 @@ class HostCreatrListSerializer(serializers.ModelSerializer):
     def get_datastore(self, obj):
         # print(obj)
         return DatastoreListSerializer(obj.datastore.filter(status=True), many=True).data
+
     #
     # def get_template(self, obj):
     #     # print(obj)
@@ -165,15 +167,15 @@ class HostCreatrListSerializer(serializers.ModelSerializer):
 
 
 class HostListSerializer(serializers.ModelSerializer):
-    '''
+    """
     Host
-    '''
+    """
 
     last_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     network = NetWorkListSerializer(many=True, read_only=True)
     datastore = DatastoreListSerializer(many=True, read_only=True)
     template = serializers.SerializerMethodField()
-    cluster = serializers.CharField(source='cluster.name')
+    cluster = serializers.CharField(source="cluster.name")
 
     used_vcpus = serializers.SerializerMethodField()
     guests_count = serializers.SerializerMethodField()
@@ -203,9 +205,9 @@ class HostListSerializer(serializers.ModelSerializer):
 
 
 class HostSerializer(serializers.ModelSerializer):
-    '''
+    """
     Host
-    '''
+    """
 
     # network = NetWorkListSerializer(many=True, read_only=True)
     # datastore = DatastoreListSerializer(many=True, read_only=True)
@@ -217,11 +219,11 @@ class HostSerializer(serializers.ModelSerializer):
 
 
 class VMListSerializer(serializers.ModelSerializer):
-    '''
+    """
     VM
-    '''
+    """
 
-    status = serializers.CharField(source='get_status_display')
+    status = serializers.CharField(source="get_status_display")
     create_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     latest_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
 
@@ -231,9 +233,9 @@ class VMListSerializer(serializers.ModelSerializer):
 
 
 class InsSerializer(serializers.Serializer):
-    '''
+    """
     VM Instance
-    '''
+    """
 
     hostname = serializers.CharField()
     type = serializers.SerializerMethodField()
@@ -242,18 +244,18 @@ class InsSerializer(serializers.Serializer):
     disk_size = serializers.IntegerField()
 
     def get_type(self, obj):
-        logging.debug("%s %s" % (self.__class__.__name__, inspect.stack()[0][3]))
-        type = self.initial_data.get('type')
-        if type in ['ECS', 'RDS']:
+        logging.debug(f"{self.__class__.__name__} {inspect.stack()[0][3]}")
+        type = self.initial_data.get("type")
+        if type in ["ECS", "RDS"]:
             return type
         else:
             raise serializers.ValidationError("類型錯誤")
 
 
 class ClusterListSerializer(serializers.ModelSerializer):
-    '''
-       VM cluster List
-    '''
+    """
+    VM cluster List
+    """
 
     esxi_num = serializers.SerializerMethodField()
     vm_num = serializers.SerializerMethodField()
@@ -261,7 +263,6 @@ class ClusterListSerializer(serializers.ModelSerializer):
     network = serializers.SerializerMethodField()
     host = serializers.SerializerMethodField()
     # template = serializers.SerializerMethodField()
-
 
     def get_esxi_num(self, obj):
         # print(obj.host.all().count())
@@ -289,9 +290,9 @@ class ClusterListSerializer(serializers.ModelSerializer):
 
 
 class ClusterRetrieveSerializer(serializers.ModelSerializer):
-    '''
+    """
     VM cluster Retrieve
-    '''
+    """
 
     esxi_num = serializers.SerializerMethodField()
     vm_num = serializers.SerializerMethodField()
@@ -311,31 +312,30 @@ class ClusterRetrieveSerializer(serializers.ModelSerializer):
 
 
 class ClusterSerializer(serializers.ModelSerializer):
-    '''
+    """
     VM cluster
-    '''
-
+    """
 
     class Meta:
         model = models.Cluster
-        fields =  ['remark']
+        fields = ["remark"]
 
 
 class DataStoreUpdateSerializer(serializers.ModelSerializer):
-    '''
+    """
     VM cluster
-    '''
+    """
 
     class Meta:
         model = models.DataStore
-        fields = ['remark', 'status']
+        fields = ["remark", "status"]
 
 
 class NetWorkUpdateSerializer(serializers.ModelSerializer):
-    '''
+    """
     VM cluster
-    '''
+    """
 
     class Meta:
         model = models.NetWork
-        fields = ['remark', 'status','dhcp']
+        fields = ["remark", "status", "dhcp"]

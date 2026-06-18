@@ -1,18 +1,20 @@
-# -*- coding: utf-8 -*-
 #
 import json
 
 from django import forms
-from django.utils import six
 from django.core.exceptions import ValidationError
+from django.utils import six
 from django.utils.translation import ugettext as _
+
 from ..utils import get_signer
 
 signer = get_signer()
 
 __all__ = [
-    'FormDictField', 'FormEncryptCharField', 'FormEncryptDictField',
-    'FormEncryptMixin',
+    "FormDictField",
+    "FormEncryptCharField",
+    "FormEncryptDictField",
+    "FormEncryptMixin",
 ]
 
 
@@ -39,7 +41,7 @@ class FormDictField(forms.Field):
         if isinstance(value, ValidationError):
             raise value
         if not value and self.required:
-            raise ValidationError(self.error_messages['required'], code='required')
+            raise ValidationError(self.error_messages["required"], code="required")
 
     def has_changed(self, initial, data):
         # Sometimes data or initial may be a string equivalent of a boolean
@@ -57,7 +59,3 @@ class FormEncryptCharField(FormEncryptMixin, forms.CharField):
 
 class FormEncryptDictField(FormEncryptMixin, FormDictField):
     pass
-
-
-
-

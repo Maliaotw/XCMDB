@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 #
 
 from .backends import *
+from .decorator import *
 from .middleware import *
 from .utils import *
-from .decorator import *

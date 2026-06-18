@@ -1,28 +1,25 @@
-# -*- coding: utf-8 -*-
 #
-import re
-from collections import OrderedDict
-from itertools import chain
-import logging
 import datetime
-import uuid
-from functools import wraps
-import time
 import ipaddress
+import logging
 import os
+import re
+import time
+import uuid
+from collections import OrderedDict
+from functools import wraps
+from itertools import chain
+
 import ipdb
 from django.utils.translation import ugettext as _
 
-
-import logging
-
-UUID_PATTERN = re.compile(r'[0-9a-zA-Z\-]{36}')
+UUID_PATTERN = re.compile(r"[0-9a-zA-Z\-]{36}")
 ipip_db = None
 
 
 def combine_seq(s1, s2, callback=None):
     for s in (s1, s2):
-        if not hasattr(s, '__iter__'):
+        if not hasattr(s, "__iter__"):
             return []
 
     seq = chain(s1, s2)
@@ -32,16 +29,16 @@ def combine_seq(s1, s2, callback=None):
 
 
 def get_logger(name=None):
-    return logging.getLogger('jumpserver.%s' % name)
+    return logging.getLogger(f"jumpserver.{name}")
 
 
-def timesince(dt, since='', default="just now"):
+def timesince(dt, since="", default="just now"):
     """
     Returns string representing "time since" e.g.
     3 days, 5 hours.
     """
 
-    if since is '':
+    if since == "":
         since = datetime.datetime.utcnow()
 
     if since is None:
@@ -69,6 +66,7 @@ def setattr_bulk(seq, key, value):
     def set_attr(obj):
         setattr(obj, key, value)
         return obj
+
     return map(set_attr, seq)
 
 
@@ -80,7 +78,7 @@ def set_or_append_attr_bulk(seq, key, value):
         setattr(obj, key, value)
 
 
-def capacity_convert(size, expect='auto', rate=1000):
+def capacity_convert(size, expect="auto", rate=1000):
     """
     :param size: '100MB', '1G'
     :param expect: 'K, M, G, T
@@ -88,14 +86,14 @@ def capacity_convert(size, expect='auto', rate=1000):
     :return:
     """
     rate_mapping = (
-        ('K', rate),
-        ('KB', rate),
-        ('M', rate**2),
-        ('MB', rate**2),
-        ('G', rate**3),
-        ('GB', rate**3),
-        ('T', rate**4),
-        ('TB', rate**4),
+        ("K", rate),
+        ("KB", rate),
+        ("M", rate**2),
+        ("MB", rate**2),
+        ("G", rate**3),
+        ("GB", rate**3),
+        ("T", rate**4),
+        ("TB", rate**4),
     )
 
     rate_mapping = OrderedDict(rate_mapping)
@@ -108,14 +106,14 @@ def capacity_convert(size, expect='auto', rate=1000):
             except ValueError:
                 pass
 
-    if expect == 'auto':
+    if expect == "auto":
         for unit, rate_ in rate_mapping.items():
-            if rate > std_size/rate_ > 1:
+            if rate > std_size / rate_ > 1:
                 expect = unit
                 break
 
     if expect not in rate_mapping:
-        expect = 'K'
+        expect = "K"
 
     expect_size = std_size / rate_mapping[expect]
     return expect_size, expect
@@ -124,14 +122,14 @@ def capacity_convert(size, expect='auto', rate=1000):
 def sum_capacity(cap_list):
     total = 0
     for cap in cap_list:
-        size, _ = capacity_convert(cap, expect='K')
+        size, _ = capacity_convert(cap, expect="K")
         total += size
-    total = '{} K'.format(total)
-    return capacity_convert(total, expect='auto')
+    total = f"{total} K"
+    return capacity_convert(total, expect="auto")
 
 
 def get_short_uuid_str():
-    return str(uuid.uuid4()).split('-')[-1]
+    return str(uuid.uuid4()).split("-")[-1]
 
 
 def is_uuid(seq):
@@ -145,12 +143,12 @@ def is_uuid(seq):
 
 
 def get_request_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR', '').split(',')
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR", "").split(",")
 
     if x_forwarded_for and x_forwarded_for[0]:
         login_ip = x_forwarded_for[0]
     else:
-        login_ip = request.META.get('REMOTE_ADDR', '')
+        login_ip = request.META.get("REMOTE_ADDR", "")
     return login_ip
 
 
@@ -165,7 +163,7 @@ def validate_ip(ip):
 
 def with_cache(func):
     cache = {}
-    key = "_{}.{}".format(func.__module__, func.__name__)
+    key = f"_{func.__module__}.{func.__name__}"
 
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -175,15 +173,17 @@ def with_cache(func):
         res = func(*args, **kwargs)
         cache[key] = res
         return res
+
     return wrapper
 
 
 def random_string(length):
-    import string
     import random
+    import string
+
     charset = string.ascii_letters + string.digits
     s = [random.choice(charset) for i in range(length)]
-    return ''.join(s)
+    return "".join(s)
 
 
 logger = get_logger(__name__)
@@ -191,39 +191,40 @@ logger = get_logger(__name__)
 
 def timeit(func):
     def wrapper(*args, **kwargs):
-        logger.debug("Start call: {}".format(func.__name__))
+        logger.debug(f"Start call: {func.__name__}")
         now = time.time()
         result = func(*args, **kwargs)
         using = (time.time() - now) * 1000
-        msg = "Call {} end, using: {:.1f}ms".format(func.__name__, using)
+        msg = f"Call {func.__name__} end, using: {using:.1f}ms"
         logger.debug(msg)
         return result
-    return wrapper
 
+    return wrapper
 
 
 def write_login_log(*args, **kwargs):
     from ..models import UserLoginLog
-    default_city = _("Unknown")
-    ip = kwargs.get('ip', '')
 
-    logging.debug("write_login_log {}".format(ip))
+    default_city = _("Unknown")
+    ip = kwargs.get("ip", "")
+
+    logging.debug(f"write_login_log {ip}")
 
     if not (ip and validate_ip(ip)):
         ip = ip[:15]
         city = default_city
     else:
         city = get_ip_city(ip) or default_city
-    kwargs.update({'ip': ip, 'city': city})
+    kwargs.update({"ip": ip, "city": city})
     UserLoginLog.objects.create(**kwargs)
 
 
 def get_ip_city(ip):
     global ipip_db
     if ipip_db is None:
-        ipip_db_path = os.path.join(os.path.dirname(__file__), 'ipip/ipipfree.ipdb')
+        ipip_db_path = os.path.join(os.path.dirname(__file__), "ipip/ipipfree.ipdb")
         ipip_db = ipdb.City(ipip_db_path)
-    info = list(set(ipip_db.find(ip, 'CN')))
-    if '' in info:
-        info.remove('')
-    return ' '.join(info)
+    info = list(set(ipip_db.find(ip, "CN")))
+    if "" in info:
+        info.remove("")
+    return " ".join(info)

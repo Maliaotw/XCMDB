@@ -3,13 +3,13 @@ Provides access to settings.
 
 Returns defaults if not set.
 """
+
 from datetime import timedelta
 
 from django.conf import settings
 
 
-class TokenSettings(object):
-
+class TokenSettings:
     """Provides settings as defaults for working with tokens."""
 
     @property
@@ -25,5 +25,6 @@ class TokenSettings(object):
             val = timedelta(days=30)
 
         return val
+
 
 token_settings = TokenSettings()

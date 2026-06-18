@@ -1,6 +1,7 @@
-from .base import Terraform
-import subprocess
 import logging
+import subprocess
+
+from .base import Terraform
 
 
 class Delete(Terraform):
@@ -14,19 +15,19 @@ class Delete(Terraform):
         self._main()
 
     def _plan(self):
-        ret = subprocess.getoutput('terraform plan')
+        ret = subprocess.getoutput("terraform plan")
         if "No changes. Infrastructure is up-to-date." in ret:
-            logging.info('%s plan ok' % self.hostname)
+            logging.info(f"{self.hostname} plan ok")
             return True
         else:
-            logging.error('%s plan error %s' % (self.hostname,ret))
-            raise Exception("%s plan錯誤 配置文件疑似修改過" % self.hostname)
+            logging.error(f"{self.hostname} plan error {ret}")
+            raise Exception(f"{self.hostname} plan錯誤 配置文件疑似修改過")
 
 
 class DeleteF(Delete):
-    '''
+    """
     強制刪除
-    '''
+    """
 
     def run(self):
         self.create_host_dir()
@@ -37,4 +38,3 @@ class DeleteF(Delete):
         ret = subprocess.getoutput(self.command)
         self.complete(ret)
         self.status = True
-

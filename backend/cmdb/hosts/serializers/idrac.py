@@ -1,13 +1,15 @@
 from rest_framework import serializers
+
 from hosts import models
 
 from .host import HostSerializer
 
 
 class IDRACSerializer(serializers.ModelSerializer):
-    '''
+    """
     iDRAC
-    '''
+    """
+
     host = HostSerializer(read_only=True)
 
     class Meta:
@@ -16,9 +18,9 @@ class IDRACSerializer(serializers.ModelSerializer):
 
 
 class IDRACListSerializer(serializers.ModelSerializer):
-    '''
+    """
     iDRAC List
-    '''
+    """
 
     info = serializers.SerializerMethodField()
 
@@ -31,4 +33,4 @@ class IDRACListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.IDRAC
         # fields = "__all__"
-        fields = ['id', 'idrac_ip', 'host', 'info']
+        fields = ["id", "idrac_ip", "host", "info"]

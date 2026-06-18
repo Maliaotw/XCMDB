@@ -1,5 +1,6 @@
-from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView, DetailView
 import django_filters
+from django.views.generic import ListView
+
 from .models import UserLoginLog
 
 
@@ -24,17 +25,12 @@ class FilteredListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filterset'] = self.filterset
-        context['search_field'] = self.param_replace()
+        context["filterset"] = self.filterset
+        context["search_field"] = self.param_replace()
         return context
 
 
-
 class LoginListFilter(django_filters.FilterSet):
-
     class Meta:
         model = UserLoginLog
-        fields = ['username']
-
-
-
+        fields = ["username"]

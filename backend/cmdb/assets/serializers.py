@@ -1,15 +1,15 @@
+from django.contrib.contenttypes.models import ContentType
 from rest_framework import serializers
 
 from assets import models
-from django.contrib.contenttypes.models import ContentType
-
 
 # Tag
 
+
 class TagSerializer(serializers.ModelSerializer):
-    '''
+    """
     TAG
-    '''
+    """
 
     class Meta:
         model = models.Tag
@@ -18,8 +18,6 @@ class TagSerializer(serializers.ModelSerializer):
 
 # ContentType
 class ContentTypeSerializer(serializers.ModelSerializer):
-
-
     class Meta:
         model = ContentType
         fields = "__all__"
@@ -27,16 +25,15 @@ class ContentTypeSerializer(serializers.ModelSerializer):
 
 # IDC
 class IDCSerializer(serializers.ModelSerializer):
-    '''
+    """
     IDC
-    '''
+    """
 
     rackunit = serializers.SerializerMethodField()
 
-    def get_rackunit(self,obj):
+    def get_rackunit(self, obj):
         # print(obj)
         return obj.rack.count()
-
 
     class Meta:
         model = models.IDC
@@ -45,9 +42,9 @@ class IDCSerializer(serializers.ModelSerializer):
 
 # ISP
 class ISPSerializer(serializers.ModelSerializer):
-    '''
+    """
     ISP
-    '''
+    """
 
     class Meta:
         model = models.ISP
@@ -56,29 +53,30 @@ class ISPSerializer(serializers.ModelSerializer):
 
 # Assets
 class AssetsSerializer(serializers.ModelSerializer):
-    '''
+    """
     Asset
-    '''
+    """
 
-    idc = serializers.IntegerField(source='rack.idc.id', read_only=True)
+    idc = serializers.IntegerField(source="rack.idc.id", read_only=True)
     create_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     latest_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
-    device_type_id = serializers.CharField(source='get_device_type_id_display', required=False)
+    device_type_id = serializers.CharField(source="get_device_type_id_display", required=False)
 
     class Meta:
         model = models.Asset
         # fields = "__all__"
-        exclude = ['content_type']
+        exclude = ["content_type"]
 
 
 class AssetsListSerializer(serializers.ModelSerializer):
-    '''
+    """
     Asset List
-    '''
-    device_type_id = serializers.CharField(source='get_device_type_id_display', required=False)
-    device_status_id = serializers.CharField(source='get_device_status_id_display', required=False)
-    rack = serializers.CharField(source='rack.name', required=False)
-    tag = serializers.CharField(source='tag.name', required=False)
+    """
+
+    device_type_id = serializers.CharField(source="get_device_type_id_display", required=False)
+    device_status_id = serializers.CharField(source="get_device_status_id_display", required=False)
+    rack = serializers.CharField(source="rack.name", required=False)
+    tag = serializers.CharField(source="tag.name", required=False)
     create_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     latest_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
 
@@ -89,9 +87,9 @@ class AssetsListSerializer(serializers.ModelSerializer):
 
 # RackUnit
 class RackUnitSerializer(serializers.ModelSerializer):
-    '''
+    """
     RackUnit 機櫃使用表
-    '''
+    """
 
     class Meta:
         model = models.RackUnit
@@ -100,10 +98,11 @@ class RackUnitSerializer(serializers.ModelSerializer):
 
 # RackUnit
 class RackUnitListSerializer(serializers.ModelSerializer):
-    '''
+    """
     RackUnit 機櫃使用表
-    '''
-    name = serializers.CharField(source='name.name')
+    """
+
+    name = serializers.CharField(source="name.name")
     asset = AssetsListSerializer()
 
     # position = serializers.CharField(source='get_position_display')
@@ -115,10 +114,12 @@ class RackUnitListSerializer(serializers.ModelSerializer):
 
 # Rack
 
+
 class RackDetailSerializer(serializers.ModelSerializer):
-    '''
+    """
     Rack 機櫃
-    '''
+    """
+
     rackunit = RackUnitListSerializer(many=True, read_only=True)
     isp = ISPSerializer(many=True, read_only=True)
     posrange = serializers.SerializerMethodField()
@@ -138,25 +139,25 @@ class RackDetailSerializer(serializers.ModelSerializer):
 
         for i in ran:
             data = {}
-            data['num'] = i
-            data['position'] = ''
-            data['name'] = ''
-            data['manage_ip'] = ''
-            data['size'] = ''
+            data["num"] = i
+            data["position"] = ""
+            data["name"] = ""
+            data["manage_ip"] = ""
+            data["size"] = ""
 
             rackunit_obj = obj.rackunit.filter(num=i)
             if rackunit_obj:
                 rackunit_obj = rackunit_obj.first()
-                data['position'] = rackunit_obj.get_position_display()
-                data['name'] = rackunit_obj.asset.name
-                data['manage_ip'] = rackunit_obj.asset.content_object.manage_ip
-                data['size'] = rackunit_obj.asset.size
-                data['disabled'] = False
+                data["position"] = rackunit_obj.get_position_display()
+                data["name"] = rackunit_obj.asset.name
+                data["manage_ip"] = rackunit_obj.asset.content_object.manage_ip
+                data["size"] = rackunit_obj.asset.size
+                data["disabled"] = False
 
             elif i in inrack_list:
-                data['disabled'] = True
+                data["disabled"] = True
             else:
-                data['disabled'] = False
+                data["disabled"] = False
             ret.append(data)
 
         return ret
@@ -181,17 +182,13 @@ class RackDetailSerializer(serializers.ModelSerializer):
         inrack_list = self._inrack(obj)
 
         for i in self._range(obj):
-
-            data = {
-                'value': i,
-                'label': i
-            }
+            data = {"value": i, "label": i}
             if i in inrack_list:
                 # print('in %s' % i)
-                data['disabled'] = True
+                data["disabled"] = True
             else:
                 # print('notin %s' % i)
-                data['disabled'] = False
+                data["disabled"] = False
 
             ret.append(data)
 
@@ -205,9 +202,10 @@ class RackDetailSerializer(serializers.ModelSerializer):
 
 
 class RackSerializer(serializers.ModelSerializer):
-    '''
+    """
     Rack 機櫃
-    '''
+    """
+
     rackunit = RackUnitListSerializer(many=True, read_only=True)
 
     class Meta:
@@ -216,9 +214,9 @@ class RackSerializer(serializers.ModelSerializer):
 
 
 class RackListSerializer(serializers.ModelSerializer):
-    '''
+    """
     Rack 機櫃
-    '''
+    """
 
     idc = serializers.SerializerMethodField()
     # asset = AssetsListSerializer(many=True, read_only=True)
@@ -226,17 +224,17 @@ class RackListSerializer(serializers.ModelSerializer):
     isp = ISPSerializer(many=True, read_only=True)
     used = serializers.SerializerMethodField()
 
-    def get_used(self,obj):
+    def get_used(self, obj):
         # print(obj)
-        return int((sum([i.asset.size for i in  obj.rackunit.all()]) / obj.height )*100)
+        return int((sum([i.asset.size for i in obj.rackunit.all()]) / obj.height) * 100)
 
     def get_idc(self, obj):
         # print(obj)
-        return "%s" % str(obj.idc)
+        return f"{str(obj.idc)}"
 
     def get_asset(self, obj):
         # print(obj)
-        return "%s" % len(obj.asset.all())
+        return f"{len(obj.asset.all())}"
 
     class Meta:
         model = models.Rack
@@ -245,10 +243,12 @@ class RackListSerializer(serializers.ModelSerializer):
 
 # IDC
 
+
 class IDCListSerializer(serializers.ModelSerializer):
-    '''
+    """
     IDC List
-    '''
+    """
+
     # rack = serializers.StringRelatedField(many=True)
     # rack = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     # rack = serializers.HyperlinkedRelatedField(
@@ -266,9 +266,9 @@ class IDCListSerializer(serializers.ModelSerializer):
 
 # NetworkDevice
 class NetworkDeviceSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetworkDevice
-    '''
+    """
 
     # type = serializers.ChoiceField(models.NetworkDevice.type_choices)
     create_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
@@ -277,15 +277,17 @@ class NetworkDeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.NetworkDevice
         # fields = "__all__"
-        exclude = ['intranet_ip', ]
+        exclude = [
+            "intranet_ip",
+        ]
 
 
 class NetworkDeviceListSerializer(serializers.ModelSerializer):
-    '''
+    """
     NetworkDevice List
-    '''
+    """
 
-    sub_asset_type = serializers.CharField(source='get_sub_asset_type_display')
+    sub_asset_type = serializers.CharField(source="get_sub_asset_type_display")
     create_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     latest_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
 

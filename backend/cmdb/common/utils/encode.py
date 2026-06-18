@@ -1,24 +1,19 @@
-# -*- coding: utf-8 -*-
 #
-import re
-from six import string_types
 import base64
-import os
-import time
 import hashlib
+import os
+import re
+import time
 from io import StringIO
 
 import paramiko
-from itsdangerous import (
-    TimedJSONWebSignatureSerializer, JSONWebSignatureSerializer,
-    BadSignature, SignatureExpired
-)
 from django.conf import settings
+from itsdangerous import BadSignature, JSONWebSignatureSerializer, SignatureExpired, TimedJSONWebSignatureSerializer
+from six import string_types
 
 from .http import http_date
 
-
-UUID_PATTERN = re.compile(r'[0-9a-zA-Z\-]{36}')
+UUID_PATTERN = re.compile(r"[0-9a-zA-Z\-]{36}")
 
 
 class Singleton(type):
@@ -35,18 +30,19 @@ class Singleton(type):
 
 
 class Signer(metaclass=Singleton):
-    """用来加密,解密,和基于时间戳的方式验证token"""
+    """用來加密,解密,和基於時間戳的方式驗證token"""
+
     def __init__(self, secret_key=None):
         self.secret_key = secret_key
 
     def sign(self, value):
-        s = JSONWebSignatureSerializer(self.secret_key, algorithm_name='HS256')
+        s = JSONWebSignatureSerializer(self.secret_key, algorithm_name="HS256")
         return s.dumps(value).decode()
 
     def unsign(self, value):
         if value is None:
             return value
-        s = JSONWebSignatureSerializer(self.secret_key, algorithm_name='HS256')
+        s = JSONWebSignatureSerializer(self.secret_key, algorithm_name="HS256")
         try:
             return s.loads(value)
         except BadSignature:
@@ -78,24 +74,19 @@ def ssh_key_string_to_obj(text, password=None):
     return key
 
 
-def ssh_pubkey_gen(private_key=None, username='jumpserver', hostname='localhost', password=None):
+def ssh_pubkey_gen(private_key=None, username="jumpserver", hostname="localhost", password=None):
     if isinstance(private_key, bytes):
         private_key = private_key.decode("utf-8")
     if isinstance(private_key, string_types):
         private_key = ssh_key_string_to_obj(private_key, password=password)
     if not isinstance(private_key, (paramiko.RSAKey, paramiko.DSSKey)):
-        raise IOError('Invalid private key')
+        raise OSError("Invalid private key")
 
-    public_key = "%(key_type)s %(key_content)s %(username)s@%(hostname)s" % {
-        'key_type': private_key.get_name(),
-        'key_content': private_key.get_base64(),
-        'username': username,
-        'hostname': hostname,
-    }
+    public_key = f"{private_key.get_name()} {private_key.get_base64()} {username}@{hostname}"
     return public_key
 
 
-def ssh_key_gen(length=2048, type='rsa', password=None, username='jumpserver', hostname=None):
+def ssh_key_gen(length=2048, type="rsa", password=None, username="jumpserver", hostname=None):
     """Generate user ssh private and public key
 
     Use paramiko RSAKey generate it.
@@ -107,18 +98,18 @@ def ssh_key_gen(length=2048, type='rsa', password=None, username='jumpserver', h
 
     f = StringIO()
     try:
-        if type == 'rsa':
+        if type == "rsa":
             private_key_obj = paramiko.RSAKey.generate(length)
-        elif type == 'dsa':
+        elif type == "dsa":
             private_key_obj = paramiko.DSSKey.generate(length)
         else:
-            raise IOError('SSH private key must be `rsa` or `dsa`')
+            raise OSError("SSH private key must be `rsa` or `dsa`")
         private_key_obj.write_private_key(f, password=password)
         private_key = f.getvalue()
         public_key = ssh_pubkey_gen(private_key_obj, username=username, hostname=hostname)
         return private_key, public_key
-    except IOError:
-        raise IOError('These is error when generate ssh key.')
+    except OSError:
+        raise OSError("These is error when generate ssh key.")
 
 
 def validate_ssh_private_key(text, password=None):
@@ -135,16 +126,15 @@ def validate_ssh_private_key(text, password=None):
         return True
 
 
-
 def content_md5(data):
-    """计算data的MD5值，经过Base64编码并返回str类型。
+    """計算data的MD5值，經過Base64編碼並返回str類型。
 
-    返回值可以直接作为HTTP Content-Type头部的值
+    返回值可以直接作為HTTP Content-Type頭部的值
     """
     if isinstance(data, str):
-        data = hashlib.md5(data.encode('utf-8'))
-    value = base64.b64encode(data.hexdigest().encode('utf-8'))
-    return value.decode('utf-8')
+        data = hashlib.md5(data.encode("utf-8"))
+    value = base64.b64encode(data.hexdigest().encode("utf-8"))
+    return value.decode("utf-8")
 
 
 def make_signature(access_key_secret, date=None):
@@ -163,6 +153,7 @@ def make_signature(access_key_secret, date=None):
 
 def encrypt_password(password, salt=None):
     from passlib.hash import sha512_crypt
+
     if password:
         return sha512_crypt.using(rounds=5000).hash(password, salt=salt)
     return None

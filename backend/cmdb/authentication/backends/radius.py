@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 #
 
-'''
+"""
 from django.contrib.auth import get_user_model
 from radiusauth.backends import RADIUSBackend, RADIUSRealmBackend
 from django.conf import settings
@@ -33,4 +32,4 @@ class RadiusBackend(CreateUserMixin, RADIUSBackend):
 
 class RadiusRealmBackend(CreateUserMixin, RADIUSRealmBackend):
     pass
-'''
+"""

@@ -1,14 +1,13 @@
-from rest_framework import serializers
-from datetime import datetime
-from rest_framework.exceptions import ErrorDetail, ValidationError
-from django.utils.translation import ugettext_lazy as _
-from django.db import transaction
-from .models import Setting, settings
-
 import json
 
-class BaseSerializer(serializers.Serializer):
+from django.db import transaction
+from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
+from .models import Setting, settings
+
+
+class BaseSerializer(serializers.Serializer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for name, field in self.fields.items():
@@ -30,11 +29,10 @@ class BaseSerializer(serializers.Serializer):
                     value = json.dumps(value)
                 initial_value = value
             else:
-                initial_value = ''
+                initial_value = ""
             field.initial = initial_value
 
-
-    def save(self,category="default" ,**kwargs):
+    def save(self, category="default", **kwargs):
 
         if not self.is_valid():
             raise ValidationError(self.errors)
@@ -43,7 +41,7 @@ class BaseSerializer(serializers.Serializer):
             # print(self.validated_data.items())
 
             for name, value in self.validated_data.items():
-                field = self.fields[name]
+                self.fields[name]
                 # print(field)
                 if not value:
                     continue
@@ -64,79 +62,72 @@ class BaseSerializer(serializers.Serializer):
                 setting.save()
 
 
-
 class LDAPSettingSerializer(BaseSerializer):
     AUTH_LDAP_SERVER_URI = serializers.CharField(
         label="LDAP server",
-
     )
     AUTH_LDAP_BIND_DN = serializers.CharField(
-        required=False, label="Bind DN",
+        required=False,
+        label="Bind DN",
     )
-
 
 
 class IdracSettingSerializer(BaseSerializer):
     IDRAC_USER = serializers.CharField(
         label="IDRAC_USER",
-
     )
     IDRAC_PASSWD = serializers.CharField(
-     label="IDRAC_PASSWD",
+        label="IDRAC_PASSWD",
     )
 
 
 class VCENTERSettingSerializer(BaseSerializer):
-
     VCENTER_SERVER = serializers.CharField(
         label="VCENTER_SERVER",
     )
 
     VCENTER_USER = serializers.CharField(
-     label="VCENTER_USER",
+        label="VCENTER_USER",
     )
 
     VCENTER_PASS = serializers.CharField(
-     label="VCENTER_PASS",
+        label="VCENTER_PASS",
     )
 
 
 class LDAPSettingSerializer(BaseSerializer):
-
     AUTH_LDAP = serializers.CharField(
         label="AUTH_LDAP",
     )
 
     AUTH_LDAP_SERVER_URI = serializers.CharField(
-     label="AUTH_LDAP_SERVER_URI",
+        label="AUTH_LDAP_SERVER_URI",
     )
 
     AUTH_LDAP_BIND_DN = serializers.CharField(
-     label="AUTH_LDAP_BIND_DN",
+        label="AUTH_LDAP_BIND_DN",
     )
 
     AUTH_LDAP_BIND_PASSWORD = serializers.CharField(
-     label="AUTH_LDAP_BIND_PASSWORD",
+        label="AUTH_LDAP_BIND_PASSWORD",
     )
 
     AUTH_LDAP_SEARCH_OU = serializers.CharField(
-     label="AUTH_LDAP_SEARCH_OU",
+        label="AUTH_LDAP_SEARCH_OU",
     )
 
     AUTH_LDAP_SEARCH_FILTER = serializers.CharField(
-     label="AUTH_LDAP_SEARCH_FILTER",
+        label="AUTH_LDAP_SEARCH_FILTER",
     )
 
     AUTH_LDAP_START_TLS = serializers.CharField(
-     label="AUTH_LDAP_START_TLS",
+        label="AUTH_LDAP_START_TLS",
     )
 
     AUTH_LDAP_USER_ATTR_MAP = serializers.CharField(
-     label="AUTH_LDAP_USER_ATTR_MAP",
+        label="AUTH_LDAP_USER_ATTR_MAP",
     )
 
     EMAIL_SUFFIX = serializers.CharField(
-     label="EMAIL_SUFFIX",
+        label="EMAIL_SUFFIX",
     )
-
-

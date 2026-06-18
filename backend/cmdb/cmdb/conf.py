@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+import errno
+import json
 import os
 import sys
 import types
-import errno
-import json
-import yaml
 from importlib import import_module
+
 import environ
+import yaml
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.dirname(BASE_DIR)
@@ -15,18 +15,16 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 
 def import_string(dotted_path):
     try:
-        module_path, class_name = dotted_path.rsplit('.', 1)
+        module_path, class_name = dotted_path.rsplit(".", 1)
     except ValueError as err:
-        raise ImportError("%s doesn't look like a module path" % dotted_path) from err
+        raise ImportError(f"{dotted_path} doesn't look like a module path") from err
 
     module = import_module(module_path)
 
     try:
         return getattr(module, class_name)
     except AttributeError as err:
-        raise ImportError('Module "%s" does not define a "%s" attribute/class' % (
-            module_path, class_name)
-        ) from err
+        raise ImportError(f'Module "{module_path}" does not define a "{class_name}" attribute/class') from err
 
 
 class Config(dict):
@@ -94,11 +92,12 @@ class Config(dict):
         if not rv:
             if silent:
                 return False
-            raise RuntimeError('The environment variable %r is not set '
-                               'and as such configuration could not be '
-                               'loaded.  Set this variable and make it '
-                               'point to a configuration file' %
-                               variable_name)
+            raise RuntimeError(
+                f"The environment variable {variable_name!r} is not set "
+                "and as such configuration could not be "
+                "loaded.  Set this variable and make it "
+                "point to a configuration file"
+            )
         return self.from_pyfile(rv, silent=silent)
 
     def from_pyfile(self, filename, silent=False):
@@ -117,15 +116,15 @@ class Config(dict):
         """
         if self.root_path:
             filename = os.path.join(self.root_path, filename)
-        d = types.ModuleType('config')
+        d = types.ModuleType("config")
         d.__file__ = filename
         try:
-            with open(filename, mode='rb') as config_file:
-                exec(compile(config_file.read(), filename, 'exec'), d.__dict__)
-        except IOError as e:
+            with open(filename, mode="rb") as config_file:
+                exec(compile(config_file.read(), filename, "exec"), d.__dict__)
+        except OSError as e:
             if silent and e.errno in (errno.ENOENT, errno.EISDIR):
                 return False
-            e.strerror = 'Unable to load configuration file (%s)' % e.strerror
+            e.strerror = f"Unable to load configuration file ({e.strerror})"
             raise
         self.from_object(d)
         return True
@@ -182,10 +181,10 @@ class Config(dict):
         try:
             with open(filename) as json_file:
                 obj = json.loads(json_file.read())
-        except IOError as e:
+        except OSError as e:
             if silent and e.errno in (errno.ENOENT, errno.EISDIR):
                 return False
-            e.strerror = 'Unable to load configuration file (%s)' % e.strerror
+            e.strerror = f"Unable to load configuration file ({e.strerror})"
             raise
         return self.from_mapping(obj)
 
@@ -193,17 +192,16 @@ class Config(dict):
         if self.root_path:
             filename = os.path.join(self.root_path, filename)
         try:
-            with open(filename, 'rt', encoding='utf8') as f:
+            with open(filename, encoding="utf8") as f:
                 obj = yaml.safe_load(f)
-        except IOError as e:
+        except OSError as e:
             if silent and e.errno in (errno.ENOENT, errno.EISDIR):
                 return False
-            e.strerror = 'Unable to load configuration file (%s)' % e.strerror
+            e.strerror = f"Unable to load configuration file ({e.strerror})"
             raise
         if obj:
             return self.from_mapping(obj)
         return True
-
 
     def from_envfile(self, filename):
         if self.root_path:
@@ -211,7 +209,6 @@ class Config(dict):
             environ.Env.read_env(filename)
 
         return environ.Env.ENVIRON
-
 
     def from_mapping(self, *mapping, **kwargs):
         """Updates the config like :meth:`update` ignoring items with non-upper
@@ -221,17 +218,15 @@ class Config(dict):
         """
         mappings = []
         if len(mapping) == 1:
-            if hasattr(mapping[0], 'items'):
+            if hasattr(mapping[0], "items"):
                 mappings.append(mapping[0].items())
             else:
                 mappings.append(mapping[0])
         elif len(mapping) > 1:
-            raise TypeError(
-                'expected at most 1 positional argument, got %d' % len(mapping)
-            )
+            raise TypeError("expected at most 1 positional argument, got %d" % len(mapping))
         mappings.append(kwargs.items())
         for mapping in mappings:
-            for (key, value) in mapping:
+            for key, value in mapping:
                 if key.isupper():
                     self[key] = value
         return True
@@ -269,7 +264,7 @@ class Config(dict):
             if not k.startswith(namespace):
                 continue
             if trim_namespace:
-                key = k[len(namespace):]
+                key = k[len(namespace) :]
             else:
                 key = k
             if lowercase:
@@ -282,7 +277,7 @@ class Config(dict):
         if default_value is None:
             return v
         tp = type(default_value)
-        # 对bool特殊处理
+        # 對bool特殊處理
         if tp is bool and isinstance(v, str):
             if v in ("true", "True", "1"):
                 return True
@@ -305,17 +300,17 @@ class Config(dict):
         return v
 
     def __repr__(self):
-        return '<%s %s>' % (self.__class__.__name__, dict.__repr__(self))
+        return f"<{self.__class__.__name__} {dict.__repr__(self)}>"
 
     def __getitem__(self, item):
-        # 先从设置的来
+        # 先從設置的來
         try:
             value = super().__getitem__(item)
         except KeyError:
             value = None
         if value is not None:
             return value
-        # 其次从环境变量来
+        # 其次從環境變量來
         value = os.environ.get(item, None)
         if value is not None:
             return self.convert_type(item, value)
@@ -326,33 +321,34 @@ class Config(dict):
 
 
 defaults = {
-    'SECRET_KEY': '',
-    'BOOTSTRAP_TOKEN': '',
-    'DEBUG': True,
-    'SITE_URL': 'http://localhost',
-    'LOG_LEVEL': 'DEBUG',
-    'LOG_DIR': os.path.join(PROJECT_DIR, 'logs'),
-    'DB_ENGINE': 'mysql',
-    'DB_NAME': 'jumpserver',
-    'DB_HOST': '127.0.0.1',
-    'DB_PORT': 3306,
-    'DB_USER': 'root',
-    'DB_PASSWORD': '',
-    'REDIS_HOST': '127.0.0.1',
-    'REDIS_PORT': 6379,
-    'REDIS_PASSWORD': '',
-    'REDIS_DB_CELERY': 3,
-    'REDIS_DB_CACHE': 4,
-    'REDIS_DB_SESSION': 5,
-    'EMAIL_SUFFIX': 'jumpserver.org',
-    'HTTP_BIND_HOST': '0.0.0.0',
-    'HTTP_LISTEN_PORT': 8088,
+    "SECRET_KEY": "",
+    "BOOTSTRAP_TOKEN": "",
+    "DEBUG": True,
+    "SITE_URL": "http://localhost",
+    "LOG_LEVEL": "DEBUG",
+    "LOG_DIR": os.path.join(PROJECT_DIR, "logs"),
+    "DB_ENGINE": "mysql",
+    "DB_NAME": "jumpserver",
+    "DB_HOST": "127.0.0.1",
+    "DB_PORT": 3306,
+    "DB_USER": "root",
+    "DB_PASSWORD": "",
+    "REDIS_HOST": "127.0.0.1",
+    "REDIS_PORT": 6379,
+    "REDIS_PASSWORD": "",
+    "REDIS_DB_CELERY": 3,
+    "REDIS_DB_CACHE": 4,
+    "REDIS_DB_SESSION": 5,
+    "EMAIL_SUFFIX": "jumpserver.org",
+    "HTTP_BIND_HOST": "0.0.0.0",
+    "HTTP_LISTEN_PORT": 8088,
 }
 
 
 def load_from_object(config):
     try:
         from config import config as c
+
         config.from_object(c)
         return True
     except ImportError:
@@ -361,7 +357,7 @@ def load_from_object(config):
 
 
 def load_from_yml(config):
-    for i in ['config.yml', 'config.yaml']:
+    for i in ["config.yml", "config.yaml"]:
         if not os.path.isfile(os.path.join(config.root_path, i)):
             continue
         loaded = config.from_yaml(i)
@@ -369,14 +365,16 @@ def load_from_yml(config):
             return True
     return False
 
+
 def load_from_env(config):
-    for i in ['.dev.env']:
+    for i in [".dev.env"]:
         if not os.path.isfile(os.path.join(config.root_path, i)):
             continue
         loaded = config.from_envfile(i)
         if loaded:
             return True
     return False
+
 
 def load_user_config():
     sys.path.insert(0, PROJECT_DIR)
@@ -387,9 +385,9 @@ def load_user_config():
         loaded = load_from_env(config)
     if not loaded:
         msg = """
-    
+
         Error: No config file found.
-    
+
         You can run `cp config_example.yml config.yml`, and edit it.
         """
         raise ImportError(msg)

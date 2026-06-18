@@ -1,10 +1,10 @@
 import json
 
-from django.db import models
-from django.core.cache import cache
-from django.db.utils import ProgrammingError, OperationalError
-from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.core.cache import cache
+from django.db import models
+from django.db.utils import OperationalError, ProgrammingError
+from django.utils.translation import ugettext_lazy as _
 
 from common.utils import get_signer
 
@@ -62,7 +62,7 @@ class Setting(models.Model):
                 v = signer.sign(v)
             self.value = v
         except json.JSONDecodeError as e:
-            raise ValueError("Json dump error: {}".format(str(e)))
+            raise ValueError(f"Json dump error: {str(e)}")
 
     @classmethod
     def save_storage(cls, name, data):
@@ -97,7 +97,7 @@ class Setting(models.Model):
         if not obj:
             return False
         value = obj.cleaned_value
-        value.pop(storage_name, '')
+        value.pop(storage_name, "")
         obj.cleaned_value = value
         obj.save()
         return True

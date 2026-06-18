@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 #
 import json
+
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 from django.db import transaction
+from django.utils.translation import ugettext_lazy as _
+
+from common.fields import FormDictField, FormEncryptCharField, FormEncryptMixin
 
 from .models import Setting, settings
-from common.fields import (
-    FormDictField, FormEncryptCharField, FormEncryptMixin
-)
 
 
 class BaseForm(forms.Form):
@@ -24,7 +23,7 @@ class BaseForm(forms.Form):
                     value = json.dumps(value)
                 initial_value = value
             else:
-                initial_value = ''
+                initial_value = ""
             field.initial = initial_value
 
     def save(self, category="default"):
@@ -59,46 +58,40 @@ class BaseForm(forms.Form):
 
 
 class BasicSettingForm(BaseForm):
-    SITE_URL = forms.URLField(
-        label=_("Current SITE URL"),
-        help_text="eg: http://jumpserver.abc.com:8080"
-    )
+    SITE_URL = forms.URLField(label=_("Current SITE URL"), help_text="eg: http://jumpserver.abc.com:8080")
     USER_GUIDE_URL = forms.URLField(
-        label=_("User Guide URL"), required=False,
-        help_text=_("User first login update profile done redirect to it")
+        label=_("User Guide URL"), required=False, help_text=_("User first login update profile done redirect to it")
     )
     EMAIL_SUBJECT_PREFIX = forms.CharField(
-        max_length=1024, label=_("Email Subject Prefix"),
-        help_text=_("Tips: Some word will be intercept by mail provider")
+        max_length=1024,
+        label=_("Email Subject Prefix"),
+        help_text=_("Tips: Some word will be intercept by mail provider"),
     )
 
 
 class EmailSettingForm(BaseForm):
-    EMAIL_HOST = forms.CharField(
-        max_length=1024, label=_("SMTP host"), initial='smtp.jumpserver.org'
-    )
+    EMAIL_HOST = forms.CharField(max_length=1024, label=_("SMTP host"), initial="smtp.jumpserver.org")
     EMAIL_PORT = forms.CharField(max_length=5, label=_("SMTP port"), initial=25)
-    EMAIL_HOST_USER = forms.CharField(
-        max_length=128, label=_("SMTP user"), initial='noreply@jumpserver.org'
-    )
+    EMAIL_HOST_USER = forms.CharField(max_length=128, label=_("SMTP user"), initial="noreply@jumpserver.org")
     EMAIL_HOST_PASSWORD = FormEncryptCharField(
-        max_length=1024, label=_("SMTP password"), widget=forms.PasswordInput,
+        max_length=1024,
+        label=_("SMTP password"),
+        widget=forms.PasswordInput,
         required=False,
-        help_text=_("Tips: Some provider use token except password")
+        help_text=_("Tips: Some provider use token except password"),
     )
     EMAIL_FROM = forms.CharField(
-        max_length=128, label=_("Send user"), initial='', required=False,
-        help_text=_(
-            "Tips: Send mail account, default SMTP account as the send account"
-        )
+        max_length=128,
+        label=_("Send user"),
+        initial="",
+        required=False,
+        help_text=_("Tips: Send mail account, default SMTP account as the send account"),
     )
     EMAIL_USE_SSL = forms.BooleanField(
-        label=_("Use SSL"), initial=False, required=False,
-        help_text=_("If SMTP port is 465, may be select")
+        label=_("Use SSL"), initial=False, required=False, help_text=_("If SMTP port is 465, may be select")
     )
     EMAIL_USE_TLS = forms.BooleanField(
-        label=_("Use TLS"), initial=False, required=False,
-        help_text=_("If SMTP port is 587, may be select")
+        label=_("Use TLS"), initial=False, required=False, help_text=_("If SMTP port is 587, may be select")
     )
 
 
@@ -107,26 +100,22 @@ class LDAPSettingForm(BaseForm):
         label=_("LDAP server"),
     )
     AUTH_LDAP_BIND_DN = forms.CharField(
-        required=False, label=_("Bind DN"),
+        required=False,
+        label=_("Bind DN"),
     )
-    AUTH_LDAP_BIND_PASSWORD = FormEncryptCharField(
-        label=_("Password"),
-        widget=forms.PasswordInput, required=False
-    )
+    AUTH_LDAP_BIND_PASSWORD = FormEncryptCharField(label=_("Password"), widget=forms.PasswordInput, required=False)
     AUTH_LDAP_SEARCH_OU = forms.CharField(
         label=_("User OU"),
         help_text=_("Use | split User OUs"),
         required=False,
     )
     AUTH_LDAP_SEARCH_FILTER = forms.CharField(
-        label=_("User search filter"),
-        help_text=_("Choice may be (cn|uid|sAMAccountName)=%(user)s)")
+        label=_("User search filter"), help_text=_("Choice may be (cn|uid|sAMAccountName)=%(user)s)")
     )
     AUTH_LDAP_USER_ATTR_MAP = FormDictField(
         label=_("User attr map"),
         help_text=_(
-            "User attr map present how to map LDAP user attr to jumpserver, "
-            "username,name,email is jumpserver attr"
+            "User attr map present how to map LDAP user attr to jumpserver, username,name,email is jumpserver attr"
         ),
     )
     # AUTH_LDAP_GROUP_SEARCH_OU = CONFIG.AUTH_LDAP_GROUP_SEARCH_OU
@@ -137,27 +126,26 @@ class LDAPSettingForm(BaseForm):
     AUTH_LDAP = forms.BooleanField(label=_("Enable LDAP auth"), required=False)
 
 
-
-
 class EmailContentSettingForm(BaseForm):
     EMAIL_CUSTOM_USER_CREATED_SUBJECT = forms.CharField(
-        max_length=1024,  required=False, label=_("Create user email subject"),
-        help_text=_("Tips: When creating a user, send the subject of the email"
-                    " (eg:Create account successfully)")
+        max_length=1024,
+        required=False,
+        label=_("Create user email subject"),
+        help_text=_("Tips: When creating a user, send the subject of the email (eg:Create account successfully)"),
     )
     EMAIL_CUSTOM_USER_CREATED_HONORIFIC = forms.CharField(
-        max_length=1024, required=False, label=_("Create user honorific"),
-        help_text=_("Tips: When creating a user, send the honorific of the "
-                    "email (eg:Hello)")
+        max_length=1024,
+        required=False,
+        label=_("Create user honorific"),
+        help_text=_("Tips: When creating a user, send the honorific of the email (eg:Hello)"),
     )
     EMAIL_CUSTOM_USER_CREATED_BODY = forms.CharField(
-        max_length=4096, required=False, widget=forms.Textarea(),
-        label=_('Create user email content'),
-        help_text=_('Tips:When creating a user, send the content of the email')
+        max_length=4096,
+        required=False,
+        widget=forms.Textarea(),
+        label=_("Create user email content"),
+        help_text=_("Tips:When creating a user, send the content of the email"),
     )
     EMAIL_CUSTOM_USER_CREATED_SIGNATURE = forms.CharField(
-        max_length=512, required=False, label=_("Signature"),
-        help_text=_("Tips: Email signature (eg:jumpserver)")
+        max_length=512, required=False, label=_("Signature"), help_text=_("Tips: Email signature (eg:jumpserver)")
     )
-
-

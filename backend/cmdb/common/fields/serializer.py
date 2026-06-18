@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 #
 
-from rest_framework import serializers
 from django.utils import six
+from rest_framework import serializers
 
-
-__all__ = ['StringIDField', 'StringManyToManyField', 'ChoiceDisplayField']
+__all__ = ["StringIDField", "StringManyToManyField", "ChoiceDisplayField"]
 
 
 class StringIDField(serializers.Field):
@@ -20,17 +18,15 @@ class StringManyToManyField(serializers.RelatedField):
 
 class ChoiceDisplayField(serializers.ChoiceField):
     def __init__(self, *args, **kwargs):
-        super(ChoiceDisplayField, self).__init__(*args, **kwargs)
-        self.choice_strings_to_display = {
-            six.text_type(key): value for key, value in self.choices.items()
-        }
+        super().__init__(*args, **kwargs)
+        self.choice_strings_to_display = {six.text_type(key): value for key, value in self.choices.items()}
 
     def to_representation(self, value):
         if value is None:
             return value
         return {
-            'value': self.choice_strings_to_values.get(six.text_type(value), value),
-            'display': self.choice_strings_to_display.get(six.text_type(value), value),
+            "value": self.choice_strings_to_values.get(six.text_type(value), value),
+            "display": self.choice_strings_to_display.get(six.text_type(value), value),
         }
 
 
