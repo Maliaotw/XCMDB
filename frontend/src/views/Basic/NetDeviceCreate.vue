@@ -89,9 +89,9 @@
                         <el-row type="flex" :gutter="20">
                             <el-col>
                                 <el-form-item
-                                        label="端口個數"
+                                        label="埠個數"
                                         prop="port_num"
-                                        :rules="{required: true, message: '端口個數 不能為空', trigger: 'blur'}"
+                                        :rules="{required: true, message: '埠個數 不能為空', trigger: 'blur'}"
                                 >
                                     <el-input v-model="form.port_num" port_num=""></el-input>
                                 </el-form-item>
@@ -159,7 +159,7 @@
 
 <script>
 
-    import {add,getType} from '@/api/netdrive'
+    import {add,getType} from '@/api/netdevice'
 
     export default {
         data() {

@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/vue-admin-template/user/login',
+    url: '/api/v1/api-token-auth/',
     method: 'post',
     data
   })
@@ -61,7 +61,46 @@ export function updateUserGroup(id, data) {
 
 export function logout() {
   return request({
-    url: '/vue-admin-template/user/logout',
+    url: '/api/v1/logout/',
     method: 'post'
+  })
+}
+
+export function getDemoUserList(params) {
+  return request({
+    url: '/api/v1/user/',
+    method: 'get',
+    params: params
+  })
+}
+
+export function updateDemoUserRole(id, role) {
+  return request({
+    url: `/api/v1/user/${id}/`,
+    method: 'patch',
+    data: { role: role }
+  })
+}
+
+export function createDemoUser(data) {
+  return request({
+    url: '/api/v1/user/',
+    method: 'post',
+    data: data
+  })
+}
+
+export function updateDemoUser(id, data) {
+  return request({
+    url: `/api/v1/user/${id}/`,
+    method: 'patch',
+    data: data
+  })
+}
+
+export function deleteDemoUser(id) {
+  return request({
+    url: `/api/v1/user/${id}/`,
+    method: 'delete'
   })
 }

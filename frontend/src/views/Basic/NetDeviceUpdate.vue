@@ -87,7 +87,7 @@
                         </el-row>
                         <el-row type="flex" :gutter="20">
                             <el-col>
-                                <el-form-item label="端口個數">
+                                <el-form-item label="埠個數">
                                     <el-input v-model="form.port_num" port_num=""></el-input>
                                 </el-form-item>
                             </el-col>
@@ -146,7 +146,7 @@
 
 <script>
 
-    import {edit,getNetDeviceDtail} from '@/api/netdrive'
+    import {edit,getNetDeviceDtail} from '@/api/netdevice'
 
     export default {
         data() {

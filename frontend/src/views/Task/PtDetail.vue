@@ -34,8 +34,8 @@
                             v-model="filterform.datetime"
                             style="margin-left: 20px;margin-right: 20px;"
                             type="datetimerange"
-                            start-placeholder="开始日期"
-                            end-placeholder="结束日期"
+                            start-placeholder="開始日期"
+                            end-placeholder="結束日期"
                             @change="handleFilterSubmit"
                     >
                     </el-date-picker>
@@ -253,8 +253,8 @@
                     })
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

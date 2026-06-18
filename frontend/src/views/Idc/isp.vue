@@ -12,7 +12,7 @@
 
         <el-row :gutter="20" style="margin-bottom: 20px">
 
-            <el-col :span="4">
+            <el-col :span="4" v-permission="'isp:add'">
                 <router-link :to="{name:'IspCreate'}">
                     <el-button type="primary">新增</el-button>
                 </router-link>
@@ -63,10 +63,11 @@
 
             <el-table-column label="功能">
                 <template slot-scope="scope">
-                    <router-link :to="{name:'ISPUpdate',params:{id:scope.row.id}}">
+                    <router-link :to="{name:'ISPUpdate',params:{id:scope.row.id}}" v-permission="'isp:edit'">
                         <el-button>編輯</el-button>
                     </router-link>
                     <el-button
+                            v-permission="'isp:delete'"
                             type="danger"
                             @click="DigDelete(scope.row)"
                             style="margin-left: 10px"
@@ -153,8 +154,8 @@
                         console.debug(error);
                         console.dir(error);
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

@@ -40,8 +40,9 @@
 
             <el-table-column label="功能">
                 <template slot-scope="scope">
-                    <el-button>編輯</el-button>
+                    <el-button v-permission="'busunit:edit'">編輯</el-button>
                     <el-button
+                            v-permission="'busunit:delete'"
                             type="danger"
                             @click="DigDelete(scope.row)"
                             style="margin-left: 10px"

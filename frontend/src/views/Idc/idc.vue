@@ -14,7 +14,7 @@
 
             <el-col :span="4">
                 <router-link :to="{name:'IDCCreate'}">
-                    <el-button type="primary">新增</el-button>
+                    <el-button v-permission="'idc:edit'" type="primary">新增</el-button>
                 </router-link>
             </el-col>
 
@@ -49,9 +49,10 @@
             <el-table-column label="功能">
                 <template slot-scope="scope">
                     <router-link :to="{name:'IDCUpdate',params:{id: scope.row.id}}">
-                        <el-button>編輯</el-button>
+                        <el-button v-permission="'idc:edit'">編輯</el-button>
                     </router-link>
                     <el-button
+                            v-permission="'idc:delete'"
                             type="danger"
                             @click="DigDelete(scope.row)"
                             style="margin-left: 10px"
@@ -86,7 +87,7 @@
 
                 <span slot="footer" class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">确 定</el-button>
+                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
             </div>
 
@@ -178,8 +179,8 @@
 
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

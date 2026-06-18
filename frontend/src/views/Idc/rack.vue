@@ -14,7 +14,7 @@
         <el-row :gutter="20" style="margin-bottom: 20px">
 
 
-            <el-col :span="4">
+            <el-col :span="4" v-permission="'rack:add'">
                 <router-link :to="{name:'RackCreate'}">
                     <el-button type="primary">新增</el-button>
                 </router-link>
@@ -73,10 +73,11 @@
 
             <el-table-column label="功能" width="200">
                 <template slot-scope="scope">
-                    <router-link :to="{name:'RackUpdate',params:{id:scope.row.id}}">
+                    <router-link :to="{name:'RackUpdate',params:{id:scope.row.id}}" v-permission="'rack:edit'">
                         <el-button>編輯</el-button>
                     </router-link>
                     <el-button
+                            v-permission="'rack:delete'"
                             type="danger"
                             @click="DigDelete(scope.row)"
                             class="ml-1"
@@ -112,7 +113,7 @@
 
                 <span slot="footer" class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">确 定</el-button>
+                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
             </div>
 
@@ -209,8 +210,8 @@
                         console.debug(error);
                         console.dir(error);
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

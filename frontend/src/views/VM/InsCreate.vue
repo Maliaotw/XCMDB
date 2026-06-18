@@ -44,7 +44,7 @@
                                         >
                                             <el-radio-group v-model="form.cluster" size="medium"
                                                             @change="selcluster">
-                                                <el-radio-button v-for="item in data.cluster" :label="item.id">
+                                                <el-radio-button v-for="item in data.cluster" :key="item.id" :label="item.id">
                                                     {{item.remark}}
                                                 </el-radio-button>
                                             </el-radio-group>
@@ -59,7 +59,7 @@
                                         >
                                             <el-radio-group v-model="form.host" size="medium"
                                                             @change="selhost">
-                                                <el-radio-button v-for="item in data.host" :label="item.id">
+                                                <el-radio-button v-for="item in data.host" :key="item.id" :label="item.id">
                                                     {{item.name}}
                                                 </el-radio-button>
                                             </el-radio-group>
@@ -74,7 +74,7 @@
 
                                         >
                                             <el-radio-group v-model="form.network" size="medium">
-                                                <el-radio-button v-for="item in data.network" :label="item.id">
+                                                <el-radio-button v-for="item in data.network" :key="item.id" :label="item.id">
                                                     {{item.remark}}
                                                 </el-radio-button>
                                             </el-radio-group>
@@ -87,7 +87,7 @@
                                                 :rules="{required: true, message: 'Datasote不能為空', trigger: 'blur'}"
                                         >
                                             <el-radio-group v-model="form.datastore" size="medium">
-                                                <el-radio-button v-for="item in data.datastore" :label="item.id">
+                                                <el-radio-button v-for="item in data.datastore" :key="item.id" :label="item.id">
                                                     {{item.name}} (剩{{item.freeSpace}})
                                                 </el-radio-button>
                                             </el-radio-group>
@@ -160,7 +160,7 @@
                                                 prop="type"
                                         >
                                             <el-radio-group v-model="form.template" size="medium">
-                                                <el-radio-button v-for="item in data.template" :label="item.hw_name">
+                                                <el-radio-button v-for="item in data.template" :key="item.hw_name" :label="item.hw_name">
                                                     {{item.hw_name}}
                                                 </el-radio-button>
                                             </el-radio-group>
@@ -260,7 +260,7 @@
     export default {
         data() {
 
-            var validateHostname = (rule, value, callback) => {
+            const validateHostname = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('名稱不得為空'));
                 } else {
@@ -496,8 +496,8 @@
                     })
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
 

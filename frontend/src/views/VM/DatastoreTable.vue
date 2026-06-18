@@ -118,8 +118,8 @@
             datastore_push(row) {
                 // console.log(row)
                 // console.log(row.id)
-                const data = row;
                 const id = row.id;
+                const data = { ...row };
                 // delete data['id'];
 
                 putDataStoreobj(id, data)
@@ -130,12 +130,12 @@
                         if (res){
                             this.$notify.success({
                                 title: '成功',
-                                message: '这是一条成功的提示消息'
+                                message: '這是一條成功的提示消息'
                             });
                         }else{
                             this.$notify.error({
                                 title: '失敗',
-                                message: '这是一条失敗的提示消息'
+                                message: '這是一條失敗的提示消息'
                             });
                         }
                     })
@@ -171,8 +171,8 @@
                     })
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

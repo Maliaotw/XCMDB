@@ -1,7 +1,7 @@
 function getTimeUnits(u) {
   const units = {
     'd': '天',
-    'h': '时',
+    'h': '時',
     'm': '分',
     's': '秒'
   }

@@ -79,7 +79,7 @@
 
                 <span slot="footer" class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">确 定</el-button>
+                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
             </div>
 

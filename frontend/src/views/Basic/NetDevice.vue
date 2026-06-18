@@ -12,7 +12,7 @@
 
         <el-row type="flex" style="margin-bottom: 20px">
 
-            <el-col :span="4">
+            <el-col :span="4" v-permission="'netdevice:add'">
                 <router-link :to="{name:'NetDeviceCreate'}">
                     <el-button type="primary">新增設備</el-button>
                 </router-link>
@@ -53,7 +53,7 @@
                             @change="handleFilterSubmit"
                     />
 
-                    <label style="margin-left: 20px;margin-right: 20px;">端口個數</label>
+                    <label style="margin-left: 20px;margin-right: 20px;">埠個數</label>
 
                     <el-input
                             v-model="filterform.port_num"
@@ -89,7 +89,7 @@
                 </template>
             </el-table-column>
 
-            <el-table-column label="端口個數">
+            <el-table-column label="埠個數">
                 <template slot-scope="scope">
                     <span>{{scope.row.port_num}}</span>
                 </template>
@@ -104,10 +104,11 @@
 
             <el-table-column label="功能">
                 <template slot-scope="scope">
-                    <router-link :to="{name:'NetDeviceUpdate',params:{id:scope.row.id}}">
+                    <router-link :to="{name:'NetDeviceUpdate',params:{id:scope.row.id}}" v-permission="'netdevice:edit'">
                         <el-button>編輯</el-button>
                     </router-link>
                     <el-button
+                            v-permission="'netdevice:delete'"
                             type="danger"
                             @click="DigDelete(scope.row)"
                             class="ml-1"
@@ -143,7 +144,7 @@
 
                 <span slot="footer" class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">确 定</el-button>
+                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
             </div>
 
@@ -156,7 +157,7 @@
 
 <script>
 
-    import {getNetDeviceAll, del} from '@/api/netdrive'
+    import {getNetDeviceAll, del} from '@/api/netdevice'
 
 
     export default {

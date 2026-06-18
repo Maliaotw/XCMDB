@@ -73,8 +73,7 @@
 
 <script>
 
-    import http from  '../../services/http'
-    import { edit} from '../../api/tag'
+    import { edit, getTagDetail } from '../../api/tag'
 
     export default {
         data() {
@@ -90,10 +89,7 @@
 
         methods: {
             getNetDeviceObj() {
-                http({
-                    url: `/tag/${this.$route.params.id}/`,
-                    method: "get",
-                })
+                getTagDetail(this.$route.params.id)
                     .then((res) => {
                         console.log(res)
                         this.form = res.data

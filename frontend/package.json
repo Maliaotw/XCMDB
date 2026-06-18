@@ -2,47 +2,47 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/ --ext .js,.vue"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/vue-fontawesome": "^2.0.0",
-    "axios": "^0.19.2",
-    "chart.js": "^2.9.3",
-    "echarts": "^4.8.0",
-    "js-cookie": "^2.2.1",
-    "sass": "^1.26.10",
-    "sass-loader": "^9.0.3",
-    "script-ext-html-webpack-plugin": "^2.1.4",
-    "vue": "^2.6.4",
-    "vue-chartjs": "^3.5.0",
-    "vue-cookie": "^1.1.4",
-    "vue-echarts": "^5.0.0-beta.0",
-    "vue-progressbar": "^0.7.5",
-    "vue-router": "^3.0.1",
-    "vue-top-progress": "^0.7.0",
-    "vuex": "^3.0.1"
+    "@fortawesome/fontawesome-svg-core": "^6.5.0",
+    "@fortawesome/free-brands-svg-icons": "^6.5.0",
+    "@fortawesome/free-solid-svg-icons": "^6.5.0",
+    "@fortawesome/vue-fontawesome": "^3.0.0",
+    "axios": "^1.6.0",
+    "chart.js": "^4.4.0",
+    "echarts": "^5.4.0",
+    "element-plus": "^2.4.0",
+    "js-cookie": "^3.0.5",
+    "pinia": "^2.1.0",
+    "sass": "^1.69.0",
+    "sass-loader": "^13.3.0",
+    "vue": "^3.5.0",
+    "vue-chartjs": "^5.2.0",
+    "vue-echarts": "^7.0.0",
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-service": "^3.4.0",
-    "debug": "^4.1.1",
-    "element-ui": "^2.13.2",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "chokidar": "^3.5.3",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-vue": "^9.21.1",
     "normalize.css": "^8.0.1",
-    "vue-template-compiler": "^2.6.4"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+    "prettier": "^3.1.0",
+    "vite": "^6.0.0",
+    "vue-eslint-parser": "^9.0.0"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not dead",
+    "not ie <= 11"
   ]
 }

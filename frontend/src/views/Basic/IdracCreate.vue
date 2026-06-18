@@ -38,9 +38,9 @@
                             <el-col>
 
                                 <el-form-item
-                                        label="端口"
+                                        label="埠"
                                         prop="port"
-                                        :rules="{required: true, message: '端口不能為空', trigger: 'blur'}">
+                                        :rules="{required: true, message: '埠不能為空', trigger: 'blur'}">
                                     <el-input
                                             v-model="form.port"
                                             type="number"

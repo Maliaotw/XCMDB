@@ -19,7 +19,7 @@
 
                     <el-input
                             v-model="filterform.name"
-                            placeholder="请输入内容"
+                            placeholder="請輸入內容"
                             style="width:15%; margin-right: 20px;"
                             @change="handleFilterSubmit"
                     >
@@ -115,6 +115,11 @@
                 </template>
             </el-table-column>
 
+            <el-table-column label="操作" v-permission="'asset:assign'">
+                <template slot-scope="scope">
+                    <el-button type="text" size="small" @click="handleAssign(scope.row)">分配</el-button>
+                </template>
+            </el-table-column>
 
         </el-table>
         <el-pagination
@@ -200,7 +205,9 @@
                     })
             },
 
-
+            handleAssign(row) {
+                this.$router.push({ name: 'AssetUpdate', params: { id: row.id } })
+            },
         },
         created() {
             // get and set auth user

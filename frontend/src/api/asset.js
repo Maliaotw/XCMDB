@@ -11,7 +11,7 @@ export function getAsset(page,size,params) {
 
 export function getAssetObj(id) {
     return request({
-        url: `/api/v1/assets/${id}`,
+        url: `/api/v1/assets/${id}/`,
         method: 'get',
     })
 }

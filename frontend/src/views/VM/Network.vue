@@ -3,7 +3,7 @@
     <div>
 
         <el-row type="flex" style="margin-bottom: 20px">
-            <el-col :span="4">
+            <el-col :span="4" v-permission="'network:add'">
                 <router-link :to="{name:'NetCreate'}">
                     <el-button type="primary">新增Network</el-button>
                 </router-link>
@@ -54,10 +54,11 @@
 
             <el-table-column label="功能">
                 <template slot-scope="scope">
-                    <router-link :to="{name:'NetUpdate',params:{id:scope.row.id}}">
+                    <router-link :to="{name:'NetUpdate',params:{id:scope.row.id}}" v-permission="'network:edit'">
                         <el-button>編輯</el-button>
                     </router-link>
                     <el-button
+                            v-permission="'network:delete'"
                             type="danger"
                             @click="DigDelete(scope.row)"
                             style="margin-left: 10px"
@@ -94,7 +95,7 @@
 
                 <span slot="footer" class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">确 定</el-button>
+                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
             </div>
 
@@ -109,7 +110,7 @@
 <script>
 
     import {DelNetwork, getNetwork} from '@/api/vm'
-    import {del} from "../../api/netdrive";
+    import {del} from "../../api/netdevice";
 
 
     export default {
@@ -186,8 +187,8 @@
 
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

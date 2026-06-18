@@ -18,7 +18,7 @@
                 <template>
                     <el-tabs v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane label="資產詳情" name="info"></el-tab-pane>
-                        <el-tab-pane label="端口信息" name="port"></el-tab-pane>
+                        <el-tab-pane label="埠信息" name="port"></el-tab-pane>
                         <el-tab-pane label="進程信息" name="process"></el-tab-pane>
                         <el-tab-pane label="變更紀錄" name="change"></el-tab-pane>
                     </el-tabs>
@@ -57,11 +57,11 @@
                             <label><b>{{this.form.manufacturer}}</b></label>
                         </el-form-item>
 
-                        <el-form-item label="型号:" style="margin-bottom: 0px">
+                        <el-form-item label="型號:" style="margin-bottom: 0px">
                             <label><b>{{this.form.model}}</b></label>
                         </el-form-item>
 
-                        <el-form-item label="系統平台:" style="margin-bottom: 0px">
+                        <el-form-item label="系統平臺:" style="margin-bottom: 0px">
                             <label><b>{{this.form.os_platform}}</b></label>
                         </el-form-item>
 
@@ -100,6 +100,7 @@
                                 >
                                     <el-form-item
                                             v-for="cpu in form.cpu"
+                                            :key="cpu.id"
                                             :label="cpu.slot"
                                             style="margin-bottom: 0px"
                                     >
@@ -117,6 +118,7 @@
                                 >
                                     <el-form-item
                                             v-for="disk in form.disk"
+                                            :key="disk.id"
                                             :label="disk.slot"
                                             style="margin-bottom: 0px"
                                     >
@@ -133,6 +135,7 @@
                                 >
                                     <el-form-item
                                             v-for="nic in form.nic"
+                                            :key="nic.id"
                                             :label="nic.name"
                                             style="margin-bottom: 0px"
                                     >
@@ -149,6 +152,7 @@
                                 >
                                     <el-form-item
                                             v-for="mem in form.memory"
+                                            :key="mem.id"
                                             :label="mem.slot"
                                             style="margin-bottom: 0px"
                                     >

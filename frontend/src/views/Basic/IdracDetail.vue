@@ -53,11 +53,11 @@
                             <label><b>{{this.form.manufacturer}}</b></label>
                         </el-form-item>
 
-                        <el-form-item label="型号:" style="margin-bottom: 0px">
+                        <el-form-item label="型號:" style="margin-bottom: 0px">
                             <label><b>{{this.form.model}}</b></label>
                         </el-form-item>
 
-                        <el-form-item label="系統平台:" style="margin-bottom: 0px">
+                        <el-form-item label="系統平臺:" style="margin-bottom: 0px">
                             <label><b>{{this.form.os_platform}}</b></label>
                         </el-form-item>
 
@@ -93,7 +93,7 @@
 
 
             <el-col :span="12">
-                <label><b>硬件信息</b></label>
+                <label><b>硬體信息</b></label>
 
                 <el-collapse
                         style="margin-left: 20px;margin-top: 10px"
@@ -106,6 +106,7 @@
                         >
                             <el-form-item
                                     v-for="cpu in form.cpu"
+                                    :key="cpu.id"
                                     :label="cpu.slot"
                                     style="margin-bottom: 0px"
                             >
@@ -122,6 +123,7 @@
                         >
                             <el-form-item
                                     v-for="disk in form.disk"
+                                    :key="disk.id"
                                     :label="disk.slot"
                                     style="margin-bottom: 0px"
                             >
@@ -138,6 +140,7 @@
                         >
                             <el-form-item
                                     v-for="nic in form.nic"
+                                    :key="nic.id"
                                     :label="nic.name"
                                     style="margin-bottom: 0px"
                             >
@@ -154,6 +157,7 @@
                         >
                             <el-form-item
                                     v-for="mem in form.memory"
+                                    :key="mem.id"
                                     :label="mem.slot"
                                     style="margin-bottom: 0px"
                             >
@@ -247,7 +251,7 @@
 
                 <span slot="footer" class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">确 定</el-button>
+                    <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
             </div>
 

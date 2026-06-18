@@ -29,7 +29,7 @@
             </el-col>
 
             <el-col :span="12" style="text-align: right">
-                <el-button type="success" icon="el-icon-upload2" @click="UpdateSubmit">更新</el-button>
+                <el-button v-permission="'asset:edit'" type="success" icon="el-icon-upload2" @click="UpdateSubmit">更新</el-button>
             </el-col>
 
         </el-row>
@@ -60,11 +60,11 @@
                                 <label><b>{{this.content_object.intranet_ip}}</b></label>
                             </el-form-item>
 
-                            <el-form-item label="型号:" style="margin-bottom: 0px">
+                            <el-form-item label="型號:" style="margin-bottom: 0px">
                                 <label><b>{{this.content_object.model}}</b></label>
                             </el-form-item>
 
-                            <el-form-item label="端口個數:" style="margin-bottom: 0px">
+                            <el-form-item label="埠個數:" style="margin-bottom: 0px">
                                 <label><b>{{this.content_object.port_num}}</b></label>
                             </el-form-item>
 
@@ -94,7 +94,7 @@
                                 <label><b>{{this.content_object.manufacturer}}</b></label>
                             </el-form-item>
 
-                            <el-form-item label="型号:" style="margin-bottom: 0px">
+                            <el-form-item label="型號:" style="margin-bottom: 0px">
                                 <label><b>{{this.content_object.model}}</b></label>
                             </el-form-item>
 
@@ -117,7 +117,7 @@
 
                         </div>
 
-                        <el-form-item label="创建日期:" style="margin-bottom: 0px">
+                        <el-form-item label="創建日期:" style="margin-bottom: 0px">
                             <label><b>{{this.form.create_at}}</b></label>
                         </el-form-item>
 
@@ -280,7 +280,7 @@
                         console.log(res)
                         this.$notify({
                             title: '成功',
-                            message: '这是一条成功的提示消息',
+                            message: '這是一條成功的提示消息',
                             type: 'success'
                         });
                     })

@@ -3,7 +3,7 @@
 
         <el-row type="flex" style="margin-bottom: 20px">
 
-            <el-col :span="6" v-for="(infor, i) in inforCardData">
+            <el-col :span="6" v-for="(infor, i) in inforCardData" :key="i">
 
                 <el-card
                         shadow="always"

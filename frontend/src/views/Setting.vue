@@ -304,12 +304,10 @@
 
 
                 </el-tab-pane>
+
             </el-tabs>
 
         </el-row>
-
-
-
 
     </div>
 
@@ -318,7 +316,7 @@
 
 <script>
 
-    import {getSeeingsObj,UpdateSeeingsObj} from '@/api/settings'
+    import {getSettingsObj, updateSettingsObj} from '@/api/settings'
 
     export default {
         data() {
@@ -338,14 +336,14 @@
 
             },
             getInit(name){
-                getSeeingsObj(name)
+                getSettingsObj(name)
                     .then((response) => {
                         this.form = response.data;
                     })
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },
@@ -354,11 +352,11 @@
                     if (valid) {
                         console.log(formName)
                         console.log(this.$refs[formName])
-                        UpdateSeeingsObj(formName,this.form)
+                        updateSettingsObj(formName,this.form)
                             .then((response) => {
                                 this.$notify.success({
                                     title: '成功',
-                                    message: '这是一条成功的提示消息'
+                                    message: '這是一條成功的提示消息'
                                 });
                             })
                     } else {

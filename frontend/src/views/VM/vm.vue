@@ -127,7 +127,7 @@
             }
         },
         destroyed() {
-            this.websock.close() //离开路由之后断开websocket连接
+            this.websock.close() //離開路由之後斷開websocket連接
             window.clearInterval(this.interval);
         },
         methods: {
@@ -156,7 +156,7 @@
                 this.interval = window.setInterval(() => {
                     console.log(this.names)
                     this.names.forEach((v) => {
-                        let val = this.$refs[v].$el.innerText
+                        const val = this.$refs[v].$el.innerText
                         if (val > 0) {
                             --this.$refs[v].$el.innerText
                         } else if (typeof val === 'number') {
@@ -171,24 +171,32 @@
                 }, 1000);
             },
 
-            initWebSocket() { //初始化weosocket
-                const wsuri = "ws://192.168.10.81:8000/api/vm/echo_once";
-                // const wsuri = "ws://192.168.10.81:8080/ws/echo_once";
+            initWebSocket() { //初始化websocket
+                const host = process.env.VUE_APP_CORE_HOST;
+                let wsuri;
+                if (!host) {
+                    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                    wsuri = `${protocol}//${window.location.host}/api/vm/echo_once`;
+                } else {
+                    // 將 http:// 或 https:// 替換為 ws:// 或 wss://
+                    const wsHost = host.replace(/^http/, 'ws');
+                    wsuri = `${wsHost}/api/vm/echo_once`;
+                }
                 this.websock = new WebSocket(wsuri);
                 this.websock.onmessage = this.websocketonmessage;
                 this.websock.onerror = this.websocketonerror;
                 this.websock.onclose = this.websocketclose;
             },
-            websocketonerror() {//连接建立失败重连
+            websocketonerror() {//連接建立失敗重連
                 this.initWebSocket();
             },
-            websocketonmessage(e) { //数据接收
+            websocketonmessage(e) { //數據接收
                 const redata = JSON.parse(e.data);
                 // console.log(redata)
                 this.foo(redata)
             },
-            websocketclose(e) {  //关闭
-                console.log('断开连接', e);
+            websocketclose(e) {  //關閉
+                console.log('斷開連接', e);
             },
 
             // 提交搜索
@@ -227,7 +235,7 @@
                     this.getInit(this.page, this.pageSize)
                 }
 
-                let col = this.tableData.find((item) => {
+                const col = this.tableData.find((item) => {
                         return item.name === data.hostname
                 })
                 if (data.is_finish) {
@@ -262,8 +270,8 @@
                     })
                     .catch((error) => {
                         this.$notify.error({
-                            title: '错误',
-                            message: '这是一条错误的提示消息'
+                            title: '錯誤',
+                            message: '這是一條錯誤的提示消息'
                         });
                     })
             },

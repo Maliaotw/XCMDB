@@ -15,7 +15,7 @@
             </el-col>
 
             <el-col :span="12" style="text-align: right">
-                <el-button type="success" icon="el-icon-upload2" @click="UpdateSubmit">更新</el-button>
+                <el-button v-permission="'asset:assign'" type="success" icon="el-icon-upload2" @click="UpdateSubmit">更新</el-button>
             </el-col>
 
         </el-row>
@@ -41,11 +41,11 @@
                         <label><b>{{this.form.content_object.intranet_ip}}</b></label>
                     </el-form-item>
 
-                    <el-form-item label="型号:" style="margin-bottom: 0px">
+                    <el-form-item label="型號:" style="margin-bottom: 0px">
                         <label><b>{{this.form.content_object.model}}</b></label>
                     </el-form-item>
 
-                    <el-form-item label="端口個數:" style="margin-bottom: 0px">
+                    <el-form-item label="埠個數:" style="margin-bottom: 0px">
                         <label><b>{{this.form.content_object.port_num}}</b></label>
                     </el-form-item>
 
@@ -61,7 +61,7 @@
                         <label><b>{{this.form.content_object.detail}}</b></label>
                     </el-form-item>
 
-                    <el-form-item label="创建日期:" style="margin-bottom: 0px">
+                    <el-form-item label="創建日期:" style="margin-bottom: 0px">
                         <label><b>{{this.form.content_object.create_date}}</b></label>
                     </el-form-item>
 
@@ -180,8 +180,7 @@
 
 
 <script>
-    import http from '../../services/http'
-    import {getStatus, getType, add, edit} from '../../api/asset'
+    import {getStatus, getType, add, edit, getAssetObj} from '../../api/asset'
     import {getTag} from '../../api/tag'
     import {getRackAll} from '../../api/rack'
     import {getIDCAll} from '../../api/idc'
@@ -229,10 +228,7 @@
                 this.msg = this.$route.params.id
             },
             getAssetObj() {
-                http({
-                    url: `/assets/${this.$route.params.id}/`,
-                    method: "get",
-                }).then((res) => {
+                getAssetObj(this.$route.params.id).then((res) => {
                     console.log(res)
                     this.form = res.data
                     this.AssetForm.number = res.data.number

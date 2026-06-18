@@ -9,6 +9,13 @@ export function getTagAll() {
     })
 }
 
+export function getTagDetail(id) {
+    return request({
+        url: `/api/v1/tag/${id}/`,
+        method: 'get'
+    })
+}
+
 
 export function getTag(page=0,size,params) {
     return request({
