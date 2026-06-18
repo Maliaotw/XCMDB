@@ -22,9 +22,10 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Requirements are installed here to ensure they will be cached.
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY ./backend/requirements.txt /requirements.txt
-#RUN pip install --upgrade pip && pip install --no-cache-dir -r /requirements.txt && rm -rf /requirements.txt
-RUN pip install --upgrade pip && pip install -r /requirements.txt --use-deprecated=legacy-resolver && rm -rf /requirements.txt
+RUN uv pip install --system --no-cache -r /requirements.txt && rm -rf /requirements.txt
+
 
 COPY ./compose/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint

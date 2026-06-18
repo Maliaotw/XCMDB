@@ -7,31 +7,24 @@ set -o nounset
 # N.B. If only .env files supported variable expansion...
 export CELERY_BROKER_URL="${REDIS_URL}"
 
-mysql_ready() {
+db_ready() {
 python << END
-
 import sys
-import pymysql
+import socket
 
 try:
-    db = pymysql.connect(
-          host="${DB_HOST}",
-          user="${MYSQL_USER}",
-          passwd="${MYSQL_ROOT_PASSWORD}",
-          db="${MYSQL_DATABASE}",
-          charset='utf8'
-    )
-except pymysql.err.OperationalError as e:
+    s = socket.create_connection(("${DB_HOST}", int("${DB_PORT}")), timeout=2)
+    s.close()
+except Exception:
     sys.exit(-1)
-
 sys.exit(0)
-
 END
 }
-until mysql_ready; do
-  >&2 echo 'Waiting for MySQL to become available...'
+
+until db_ready; do
+  >&2 echo "Waiting for Database (${DB_HOST}:${DB_PORT}) to become available..."
   sleep 1
 done
->&2 echo 'MySQL is available'
+>&2 echo "Database is available"
 
 exec "$@"
