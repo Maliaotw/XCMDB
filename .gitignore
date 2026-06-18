@@ -160,3 +160,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# Opencode AI Agent framework (tool-level config)
+.opencode/env
+.opencode/node_modules/
