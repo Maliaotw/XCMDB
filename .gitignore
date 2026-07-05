@@ -163,3 +163,5 @@ dmypy.json
 # Opencode AI Agent framework (tool-level config)
 .opencode/env
 .opencode/node_modules/
+
+.env.dev
