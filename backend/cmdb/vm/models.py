@@ -14,7 +14,7 @@ class VM(models.Model):
     name = models.CharField(max_length=255)
     status_choice = ((1, "running"), (2, "stop"), (3, "restart"), (4, "正在初始化中"), (5, "構建失敗"))
     status = models.PositiveSmallIntegerField(choices=status_choice, default=4)
-    check = models.CharField(max_length=64, default="")
+    check_field = models.CharField(max_length=64, default="")
     instance = models.OneToOneField("Instance", null=True, on_delete=models.CASCADE)
     task = models.CharField(max_length=64, default="")
     is_finish = models.BooleanField(default=False)

@@ -327,12 +327,12 @@ defaults = {
     "SITE_URL": "http://localhost",
     "LOG_LEVEL": "DEBUG",
     "LOG_DIR": os.path.join(PROJECT_DIR, "logs"),
-    "DB_ENGINE": "mysql",
-    "DB_NAME": "jumpserver",
-    "DB_HOST": "127.0.0.1",
-    "DB_PORT": 3306,
-    "DB_USER": "root",
-    "DB_PASSWORD": "",
+    "DB_ENGINE": "postgresql",
+    "DB_NAME": "cmdb",
+    "DB_HOST": "192.168.68.56",
+    "DB_PORT": 5435,
+    "DB_USER": "xcmdb_user",
+    "DB_PASSWORD": "xCmD2bX9vL1",
     "REDIS_HOST": "127.0.0.1",
     "REDIS_PORT": 6379,
     "REDIS_PASSWORD": "",
@@ -367,7 +367,7 @@ def load_from_yml(config):
 
 
 def load_from_env(config):
-    for i in [".dev.env"]:
+    for i in [".env"]:
         if not os.path.isfile(os.path.join(config.root_path, i)):
             continue
         loaded = config.from_envfile(i)

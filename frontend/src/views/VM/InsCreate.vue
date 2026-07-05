@@ -256,6 +256,8 @@
 
     import {add, get} from '../../api/instance'
     import {getClusterAll} from '../../api/vm'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -434,7 +436,7 @@
 
 
             gopack() {
-                this.$router.push({name: 'Instance'})
+                router.push({name: 'Instance'})
             },
             selcluster(val) {
                 const self = this

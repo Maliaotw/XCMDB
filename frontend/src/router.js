@@ -3,7 +3,7 @@ import Layout from './views/Layout'
 import { getTokenFromCookie } from '@/utils/auth'
 import { ElMessage } from 'element-plus'
 
-const routes = [
+const constantRoutes = [
   {
     path: '/',
     redirect: '/login'
@@ -20,7 +20,7 @@ const routes = [
     children: [
       {
         path: '/Home',
-        name: 'Home',
+        name: 'HomeDashboard',
         meta: {
           index: '/Home',
           title: '儀表盤',
@@ -478,14 +478,14 @@ const routes = [
     component: () => import('./views/notFound.vue')
   },
   {
-    path: '*',
+    path: '/:pathMatch(.*)*',
     redirect: '/404'
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: constantRoutes
 })
 
 const whiteList = ['/login', '/404']
@@ -545,5 +545,13 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
+
+export function resetRouter() {
+  const newRouter = createRouter({
+    history: createWebHistory(),
+    routes: constantRoutes
+  })
+  router.matcher = newRouter.matcher
+}
 
 export default router

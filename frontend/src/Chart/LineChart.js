@@ -1,25 +1,43 @@
-import {Line, mixins} from 'vue-chartjs'
+import { defineComponent } from 'vue'
+import { Line } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js'
 
-export default {
-    extends: Line,
-    mixins: [mixins.reactiveProp],
-    data: () => ({
-        props: ['chartData'],
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            title: {
-                display: true,
-                text: '七天內資產'
-            }
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
+
+export default defineComponent({
+  name: 'LineChart',
+  extends: Line,
+  props: ['chartData'],
+  data() {
+    return {
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: '七天內資產'
         }
-    }),
-    mounted() {
-        // this.chartData is created in the mixin.
-        // If you want to pass options please create a local options object
-        this.renderChart(
-            this.chartData,
-            this.options
-        )
+      }
     }
-}
+  },
+  mounted() {
+    this.renderChart(this.chartData, this.options)
+  }
+})

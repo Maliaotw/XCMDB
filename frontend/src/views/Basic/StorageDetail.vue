@@ -206,13 +206,13 @@
             // this.activeTag = '/Home/Host'
             // this.$attrs.activeTag = "/Home/Host"
             this.getinit()
-            console.log(this.$store.state.jwt)
-            console.log(this.$store.state)
-            this.$store.state.users.navTags = [{
-                active: true,
-                index: "/Home/Storage",
-                title: "存儲設備列表"
-            },]
+            // console.log(this.$store.state.jwt)
+            // console.log(this.$store.state)
+            // this.$store.state.users.navTags = [{
+            //     active: true,
+            //     index: "/Home/Storage",
+            //     title: "存儲設備列表"
+            // },]
 
             // this.size()
         }

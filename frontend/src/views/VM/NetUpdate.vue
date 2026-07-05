@@ -78,6 +78,8 @@
 <script>
 
     import {getNetworkObj,EditNetwork} from '@/api/vm'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
     // import http from "../../services/http";
 
     export default {
@@ -112,7 +114,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'Network'})
+                router.push({name: 'Network'})
             },
 
 

@@ -191,6 +191,7 @@ class InstanceNameViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = LimitOffsetPagination
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_fields = ["hw_name"]
+    basename = "instancename"
     # authentication_classes = [MyToken]
 
 

@@ -47,12 +47,12 @@
       <el-button
         v-if="!isSystemAdminView"
         type="warning"
-        size="mini"
+        size="small"
         @click="switchToAdminView"
       >
         進入管理後台
       </el-button>
-      <el-button v-else type="success" size="mini" @click="switchToResourceView">
+      <el-button v-else type="success" size="small" @click="switchToResourceView">
         返回資源視圖
       </el-button>
     </el-col>

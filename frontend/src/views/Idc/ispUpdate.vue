@@ -121,6 +121,8 @@
 <script>
 
     import {getISPObj, edit} from '../../api/isp'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -162,7 +164,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'ISP'})
+                router.push({name: 'ISP'})
             }
         }
 

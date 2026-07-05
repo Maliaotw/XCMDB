@@ -8,8 +8,7 @@ from io import StringIO
 
 import paramiko
 from django.conf import settings
-from itsdangerous import BadSignature, JSONWebSignatureSerializer, SignatureExpired, TimedJSONWebSignatureSerializer
-from six import string_types
+from itsdangerous import BadSignature, SignatureExpired, URLSafeSerializer, URLSafeTimedSerializer
 
 from .http import http_date
 
@@ -36,24 +35,24 @@ class Signer(metaclass=Singleton):
         self.secret_key = secret_key
 
     def sign(self, value):
-        s = JSONWebSignatureSerializer(self.secret_key, algorithm_name="HS256")
-        return s.dumps(value).decode()
+        s = URLSafeSerializer(self.secret_key)
+        return str(s.dumps(value))
 
     def unsign(self, value):
         if value is None:
             return value
-        s = JSONWebSignatureSerializer(self.secret_key, algorithm_name="HS256")
+        s = URLSafeSerializer(self.secret_key)
         try:
             return s.loads(value)
         except BadSignature:
             return None
 
     def sign_t(self, value, expires_in=3600):
-        s = TimedJSONWebSignatureSerializer(self.secret_key, expires_in=expires_in)
-        return str(s.dumps(value), encoding="utf8")
+        s = URLSafeTimedSerializer(self.secret_key, expires_in=expires_in)
+        return str(s.dumps(value))
 
     def unsign_t(self, value):
-        s = TimedJSONWebSignatureSerializer(self.secret_key)
+        s = URLSafeTimedSerializer(self.secret_key)
         try:
             return s.loads(value)
         except (BadSignature, SignatureExpired):
@@ -77,7 +76,7 @@ def ssh_key_string_to_obj(text, password=None):
 def ssh_pubkey_gen(private_key=None, username="jumpserver", hostname="localhost", password=None):
     if isinstance(private_key, bytes):
         private_key = private_key.decode("utf-8")
-    if isinstance(private_key, string_types):
+    if isinstance(private_key, str):
         private_key = ssh_key_string_to_obj(private_key, password=password)
     if not isinstance(private_key, (paramiko.RSAKey, paramiko.DSSKey)):
         raise OSError("Invalid private key")

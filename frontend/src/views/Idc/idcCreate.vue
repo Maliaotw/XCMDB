@@ -72,6 +72,8 @@
 <script>
 
     import {add} from '../../api/idc'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -103,7 +105,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'IDC'})
+                router.push({name: 'IDC'})
             }
         }
 

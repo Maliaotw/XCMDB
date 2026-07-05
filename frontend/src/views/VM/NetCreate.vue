@@ -88,6 +88,8 @@
 <script>
 
     import {AddNetwork, getNetworkAll} from '@/api/vm'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -121,7 +123,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'Network'})
+                router.push({name: 'Network'})
             },
 
 

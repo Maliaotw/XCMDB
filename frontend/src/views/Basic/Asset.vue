@@ -59,7 +59,7 @@
                                @change="handleFilterSubmit"
                     >
                         <el-option key="" label="----" value=""/>
-                        <el-option v-for="item in this.racklist" :label="item.name" :key="item.id"
+                        <el-option v-for="item in racklist" :label="item.name" :key="item.id"
                                    :value="item.id"/>
 
                     </el-select>
@@ -75,7 +75,7 @@
             <el-table-column
                     label="資產名稱"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
 
                     <router-link :to="{name:'AssetDetail',params:{id:scope.row.id}}">
                         <el-link type="primary" :underline="false">{{ scope.row.name }}</el-link>
@@ -84,39 +84,39 @@
             </el-table-column>
 
             <el-table-column label="類型">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.device_type_id}}</span>
                 </template>
             </el-table-column>
 
 
             <el-table-column label="狀態">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.device_status_id}}</span>
                 </template>
             </el-table-column>
 
             <el-table-column label="標籤">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.tag}}</span>
                 </template>
             </el-table-column>
 
 
             <el-table-column label="機櫃">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.rack}}</span>
                 </template>
             </el-table-column>
 
             <el-table-column label="產編">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.number}}</span>
                 </template>
             </el-table-column>
 
             <el-table-column label="操作" v-permission="'asset:assign'">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <el-button type="text" size="small" @click="handleAssign(scope.row)">分配</el-button>
                 </template>
             </el-table-column>
@@ -139,83 +139,72 @@
 </template>
 
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
+import { getAsset } from '../../api/asset'
 
-    import {getAsset} from '../../api/asset'
+const total = ref(0)
+const pageSize = ref(10)
+const page = ref(1)
+const tableData = ref([])
+const form = ref({
+  name: '',
+})
+const title = ref('')
+const formLabelWidth = ref('120px')
+const filterform = ref({})
+const typelist = ref('')
+const statuslist = ref('')
+const racklist = ref('')
 
+// 提交搜索
+function handleFilterSubmit() {
+  getAssets(page.value, pageSize.value, filterform.value)
 
-    export default {
-        data() {
-            return {
-                total: 0,
-                pageSize: 10,
-                page: 1,
-                tableData: [],
-                form: {
-                    name: '',
-                },
-                title: '',
-                formLabelWidth: '120px',
-                filterform: {},
-                typelist: '',
-                statuslist: '',
-                racklist: ''
-            }
-        },
+}
 
-        methods: {
-            // 提交搜索
-            handleFilterSubmit() {
-                this.getAssets(this.page, this.pageSize, this.filterform)
+// 分頁
+function handleIndexChange(p) {
+  page.value = p
+  getAssets(page.value, pageSize.value, filterform.value)
 
-            },
+}
+function handleSizeChange(size) {
+  page.value = 1
+  pageSize.value = size
+  getAssets(page.value, pageSize.value, filterform.value)
 
-            // 分頁
-            handleIndexChange(p) {
-                this.page = p
-                this.getAssets(this.page, this.pageSize, this.filterform)
+}
 
-            },
-            handleSizeChange(size) {
-                this.page = 1
-                this.pageSize = size
-                this.getAssets(this.page, this.pageSize, this.filterform)
-
-            },
-
-            // 請求資產
-            getAssets(p, size, params) {
-                if (p === '1') {
-                    p = 0
-                } else {
-                    p = p - 1
-                }
-                const page = p * this.pageSize
+// 請求資產
+function getAssets(p, size, params) {
+  if (p === '1') {
+    p = 0
+  } else {
+    p = p - 1
+  }
+  const pageValue = p * pageSize.value
 
 
-                getAsset(page, size, params)
-                    .then((response) => {
-                        console.log(response)
-                        this.tableData = response.data.results
-                        this.racklist = response.data.rack
-                        this.total = response.data.count
-                    })
+  getAsset(pageValue, size, params)
+    .then((response) => {
+      console.log(response)
+      tableData.value = response.data.results
+      racklist.value = response.data.rack
+      total.value = response.data.count
+    })
 
-                    .catch((error) => {
-                    })
-            },
+    .catch((error) => {
+    })
+}
 
-            handleAssign(row) {
-                this.$router.push({ name: 'AssetUpdate', params: { id: row.id } })
-            },
-        },
-        created() {
-            // get and set auth user
-            this.getAssets(this.page, this.pageSize)
+function handleAssign(row) {
+  // router.push is already handled in the template so we just need to import router
+  window.location.hash = `#/AssetUpdate/${row.id}`
+}
 
-
-        },
-
-
-    }
+onMounted(() => {
+  // get and set auth user
+  getAssets(page.value, pageSize.value)
+})
 </script>

@@ -19,7 +19,7 @@
             <el-table-column type="index">
             </el-table-column>
             <el-table-column label="名稱" :width="300">
-                <template slot-scope="scope">
+                <template #default="scope">
 
                     <router-link :to="{name:'StorageDetail',params:{id:scope.row.id}}">
                         <el-link type="primary" :underline="false">{{ scope.row.name }}</el-link>
@@ -29,20 +29,20 @@
             </el-table-column>
 
             <el-table-column label="插槽數量">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.slotnum}}</span>
                 </template>
             </el-table-column>
 
             <el-table-column label="創建日期">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>{{scope.row.create_at}}</span>
                 </template>
             </el-table-column>
 
 
             <el-table-column label="功能">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <el-button
                             type="danger"
                             @click="DigDelete(scope.row)"
@@ -68,16 +68,17 @@
 
 
         <el-dialog
-                :visible.sync="dialogVisible"
+                v-model="dialogVisible"
                 width="20%"
-                :show-close="false"
+                show-close="false"
+                @close="dialogVisible = false"
         >
             <div style="text-align: center">
                 <i class="el-icon-warning" style="font-size: 100px;color: gold"></i>
                 <h2 style="margin-bottom: 20px">你確定要刪除嗎</h2>
                 <p>[{{DeleteForm.name}}]</p>
 
-                <span slot="footer" class="dialog-footer">
+                <span class="dialog-footer">
                     <el-button type="info" @click="dialogVisible = false">取 消</el-button>
                     <el-button type="danger" @click="SubmitDelete(DeleteForm.id)">確 定</el-button>
                 </span>
@@ -90,102 +91,88 @@
 </template>
 
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
+import { getStorageAll, del } from '../../api/storage'
 
-    import {getStorageAll, del} from '../../api/storage'
+const total = ref(0)
+const pageSize = ref(10)
+const page = ref(1)
+const tableData = ref([])
+const form = ref({
+  name: '',
+})
+const filterform = ref({
+  name: '',
+  sub_asset_type: '',
+  manage_ip: '',
+  port_num: '',
+})
+const DeleteForm = ref({
+  name: '',
+  id: ''
+})
+const dialogVisible = ref(false)
 
+// 提交刪除
+function SubmitDelete(id) {
+  console.log(id)
+  del(id)
+    .then((res) => {
+      console.log(res)
+      dialogVisible.value = false
+      getinit(page.value, pageSize.value)
+    })
+}
 
-    export default {
-        data() {
-            return {
-                total: 0,
-                pageSize: 10,
-                page: 1,
-                tableData: [],
-                form: {
-                    name: '',
-                },
-                filterform: {
-                    name: '',
-                    sub_asset_type: '',
-                    manage_ip: '',
-                    port_num: '',
-                },
-                DeleteForm: {
-                    name: '',
-                    id: ''
-                },
-                dialogVisible: false
-            }
-        },
+// 顯示刪除通知框
+function DigDelete(row) {
+  dialogVisible.value = true
+  DeleteForm.value.name = row.name
+  DeleteForm.value.id = row.id
 
-        methods: {
-            // 提交刪除
-            SubmitDelete(id) {
-                console.log(id)
-                del(id)
-                    .then((res) => {
-                            console.log(res)
-                            this.dialogVisible = false
-                            this.getinit(this.page, this.pageSize)
-                        }
-                    )
-            },
+}
 
-            // 顯示刪除通知框
-            DigDelete(row) {
-                this.dialogVisible = true
-                this.DeleteForm.name = row.name
-                this.DeleteForm.id = row.id
+// 提交搜索
+function handleFilterSubmit() {
+  getinit(page.value, pageSize.value, filterform.value)
 
-            },
+}
 
-            // 提交搜索
-            handleFilterSubmit() {
-                this.getinit(this.page, this.pageSize, this.filterform)
+// 分頁
+function handleIndexChange(p) {
+  page.value = p
+  getinit(page.value, pageSize.value)
 
-            },
+}
+function handleSizeChange(size) {
+  page.value = 1
+  pageSize.value = size
+  getinit(page.value, pageSize.value)
 
-            // 分頁
-            handleIndexChange(p) {
-                this.page = p
-                this.getinit(this.page, this.pageSize)
+}
 
-            },
-            handleSizeChange(size) {
-                this.page = 1
-                this.pageSize = size
-                this.getinit(this.page, this.pageSize)
+function getinit(p, size, params) {
+  if (p === '1') {
+    p = 0
+  } else {
+    p = p - 1
+  }
+  const pageValue = p * pageSize.value
+  getStorageAll(pageValue, size, params)
+    .then((response) => {
+      console.log(response)
+      tableData.value = response.data.results
+      total.value = response.data.count
+    })
 
-            },
+    .catch((error) => {
 
-            getinit(p, size, params) {
-                if (p === '1') {
-                    p = 0
-                } else {
-                    p = p - 1
-                }
-                const page = p * this.pageSize
-                getStorageAll(page, size, params)
-                    .then((response) => {
-                        console.log(response)
-                        this.tableData = response.data.results
-                        this.total = response.data.count
-                    })
+    })
+}
 
-                    .catch((error) => {
-
-                    })
-            },
-
-
-        },
-        created() {
-            // 請求網路設備
-            this.getinit(this.page, this.pageSize)
-
-        }
-
-
-    }
+// 請求網路設備
+onMounted(() => {
+  getinit(page.value, pageSize.value)
+})
 </script>

@@ -162,6 +162,8 @@
     import {getRackObj, edit} from '../../api/rack'
     import {getISP} from '../../api/isp'
     import {getIDC} from '../../api/idc'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -209,7 +211,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'Rack'})
+                router.push({name: 'Rack'})
             }
         }
 

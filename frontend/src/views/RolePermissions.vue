@@ -24,7 +24,7 @@
                             <el-table-column label="可存取選單 (Menus)">
                                 <template slot-scope="scope">
                                     <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                                        <el-tag v-for="menuName in parseJSON(scope.row.menus)" :key="menuName" type="info" size="mini" effect="plain">
+                                        <el-tag v-for="menuName in parseJSON(scope.row.menus)" :key="menuName" type="info" size="small" effect="plain">
                                             {{ getMenuTitle(menuName) }}
                                         </el-tag>
                                         <span v-if="parseJSON(scope.row.menus).length === 0" style="color: #c0c4cc; font-style: italic; font-size: 13px;">未配置任何選單</span>
@@ -34,7 +34,7 @@
                             <el-table-column label="可執行敏感操作 (Actions)" width="280">
                                 <template slot-scope="scope">
                                     <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                                        <el-tag v-for="actionName in parseJSON(scope.row.actions)" :key="actionName" type="warning" size="mini" effect="plain">
+                                        <el-tag v-for="actionName in parseJSON(scope.row.actions)" :key="actionName" type="warning" size="small" effect="plain">
                                             {{ actionName }}
                                         </el-tag>
                                         <span v-if="parseJSON(scope.row.actions).length === 0" style="color: #c0c4cc; font-style: italic; font-size: 13px;">僅唯讀 (無寫入操作)</span>

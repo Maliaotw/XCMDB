@@ -11,6 +11,8 @@ CONFIG = load_user_config()
 LANGUAGE_CODE = "zh-hans"
 TIME_ZONE = "Asia/Shanghai"
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -24,33 +26,23 @@ ALLOWED_HOSTS = ["*"]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-# Use the same database for tests to match production behavior
-try:
-    import pymysql
-
-    pymysql.install_as_MySQLdb()
-except ImportError:
-    pass
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
     "default": {
         "ENGINE": f"django.db.backends.{CONFIG.DB_ENGINE.lower()}",
-        "NAME": CONFIG.MYSQL_DATABASE,
+        "NAME": CONFIG.DB_NAME,
         "HOST": CONFIG.DB_HOST,
         "PORT": CONFIG.DB_PORT,
         "USER": CONFIG.DB_USER,
-        "PASSWORD": CONFIG.MYSQL_ROOT_PASSWORD,
+        "PASSWORD": CONFIG.DB_PASSWORD,
     }
 }
 
-if CONFIG.DB_ENGINE.lower() == "mysql":
-    DATABASES["default"]["OPTIONS"] = {
-        "init_command": "SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER'",
-        "charset": "utf8mb4",
-    }
-
 # Test configuration: reuse test database to avoid EOFError on CI/CD
-TEST = {"USER": CONFIG.DB_USER, "PASSWORD": CONFIG.MYSQL_ROOT_PASSWORD, "NAME": f"test_{CONFIG.MYSQL_DATABASE}"}
+TEST = {"USER": CONFIG.DB_USER, "PASSWORD": CONFIG.DB_PASSWORD, "NAME": f"test_{CONFIG.DB_NAME}"}
 
 
 # CACHES
@@ -58,7 +50,7 @@ TEST = {"USER": CONFIG.DB_USER, "PASSWORD": CONFIG.MYSQL_ROOT_PASSWORD, "NAME": 
 # https://docs.djangoproject.com/en/dev/ref/settings/#caches
 CACHES = {
     "default": {
-        "BACKEND": "redis_cache.RedisCache",
+        "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": f"redis://:{CONFIG.REDIS_PASSWORD}@{CONFIG.REDIS_HOST}:{CONFIG.REDIS_PORT}/{CONFIG.REDIS_DB_CACHE}",
         "TIMEOUT": 3600,
     }

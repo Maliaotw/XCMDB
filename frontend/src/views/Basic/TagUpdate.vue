@@ -74,6 +74,8 @@
 <script>
 
     import { edit, getTagDetail } from '../../api/tag'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -118,7 +120,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'Tag'})
+                router.push({name: 'Tag'})
             }
         }
 

@@ -71,17 +71,17 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "notFound",
-  methods: {
-    goHome() {
-      this.$router.push({ name: 'Home' });
-    },
-    goBack() {
-      this.$router.go(-1);
-    }
-  }
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function goHome() {
+  router.push({ name: 'Home' })
+}
+
+function goBack() {
+  router.go(-1)
 }
 </script>
 

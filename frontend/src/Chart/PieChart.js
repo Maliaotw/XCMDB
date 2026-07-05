@@ -1,22 +1,37 @@
-import {mixins, Doughnut} from 'vue-chartjs'
+import { defineComponent } from 'vue'
+import { Doughnut } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js'
 
-export default {
-    extends: Doughnut,
-    mixins: [mixins.reactiveProp],
-    data: () => ({
-        props: ['chartData'],
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            title: {
-                display: true,
-                text: '各類型資產統計'
-            }
+ChartJS.register(
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+)
+
+export default defineComponent({
+  name: 'PieChart',
+  extends: Doughnut,
+  props: ['chartData'],
+  data() {
+    return {
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: '各類型資產統計'
         }
-    }),
-    mounted() {
-        // this.chartData is created in the mixin.
-        // If you want to pass options please create a local options object
-        this.renderChart(this.chartData, this.options)
+      }
     }
-}
+  },
+  mounted() {
+    this.renderChart(this.chartData, this.options)
+  }
+})

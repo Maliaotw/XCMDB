@@ -84,9 +84,9 @@
 
 
         <el-dialog
-                :visible.sync="dialogVisible"
+                v-model="dialogVisible"
                 width="20%"
-                :show-close="false"
+                show-close="false"
         >
             <div style="text-align: center">
                 <i class="el-icon-warning" style="font-size: 100px;color: gold"></i>

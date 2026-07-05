@@ -126,7 +126,7 @@
                 names: [],
             }
         },
-        destroyed() {
+        beforeUnmount() {
             this.websock.close() //離開路由之後斷開websocket連接
             window.clearInterval(this.interval);
         },

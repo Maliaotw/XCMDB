@@ -11,7 +11,7 @@ from functools import wraps
 from itertools import chain
 
 import ipdb
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 UUID_PATTERN = re.compile(r"[0-9a-zA-Z\-]{36}")
 ipip_db = None

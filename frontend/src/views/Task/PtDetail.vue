@@ -120,9 +120,9 @@
 
 
                 <el-dialog
-                        :visible.sync="dialogVisible"
+                        v-model="dialogVisible"
                         width="40%"
-                        :show-close="false"
+                        show-close="false"
                 >
                     <div>
                         <h2 style="margin-bottom: 20px">{{Form.name}}</h2>
@@ -162,6 +162,8 @@
     import {getTd} from '../../api/td'
     import LineChart from '../../Chart/LineChart'
     import PieChart from '../../Chart/PieChart'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
 
 
@@ -201,7 +203,7 @@
             },
 
             gopack() {
-                this.$router.push({name: 'pt'})
+                router.push({name: 'pt'})
             },
 
             // 分頁

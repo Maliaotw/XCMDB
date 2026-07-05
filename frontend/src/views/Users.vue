@@ -46,14 +46,14 @@
                                 <template slot-scope="scope">
                                     <el-button 
                                         type="warning" 
-                                        size="mini" 
+                                        size="small" 
                                         icon="el-icon-edit"
                                         @click="openEditDialog(scope.row)">
                                         編輯
                                     </el-button>
                                     <el-button 
                                         type="danger" 
-                                        size="mini" 
+                                        size="small" 
                                         icon="el-icon-delete"
                                         @click="handleDelete(scope.row)"
                                         :disabled="scope.row.username === 'admin'">

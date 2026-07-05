@@ -84,7 +84,7 @@
                 form: {},
             }
         },
-        destroyed() {
+        beforeUnmount() {
 
         },
         methods: {

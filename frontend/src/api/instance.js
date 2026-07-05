@@ -28,14 +28,14 @@ export function add(data) {
 
 export function del(id) {
     return request({
-        url: `/api/v1/${url}/'${id}/`,
+        url: `/api/v1/${url}/${id}/`,
         method: 'delete'
     })
 }
 
 export function edit(id, data) {
     return request({
-        url: `/api/v1/${url}/'${id}/`,
+        url: `/api/v1/${url}/${id}/`,
         method: 'put',
         data
     })

@@ -1,26 +1,13 @@
 <template>
     <div style="min-height: 600px">
-
         <el-row type="flex" style="margin-bottom: 20px">
-
             <el-col :span="6" v-for="(infor, i) in inforCardData" :key="i">
-
-                <el-card
-                        shadow="always"
-                        style="margin-right: 10px;height: 100px"
-                        :body-style="{ padding: '10px'}"
-
-                >
+                <el-card shadow="always" style="margin-right: 10px;height: 100px" :body-style="{ padding: '10px'}">
                     <el-row type="flex">
-                        <el-col
-                                :span="6"
-                                align="center"
-                        >
-                            <i :class=infor.icon style="font-size: 50px;margin: 10px"/>
+                        <el-col :span="6" align="center">
+                            <i :class="infor.icon" style="font-size: 50px;margin: 10px" />
                         </el-col>
-                        <el-col :span="18"
-                                align="right"
-                        >
+                        <el-col :span="18" align="right">
                             <p v-bind:style="{color:infor.color}">
                                 {{ infor.title }}
                             </p>
@@ -28,142 +15,86 @@
                                 {{ infor.count }}
                             </p>
                         </el-col>
-
                     </el-row>
-
                 </el-card>
-
             </el-col>
-
         </el-row>
-
-
         <el-row type="flex">
             <el-col :span="16">
-                <div class="mt-0"
-                >
-                    <line-chart
-                            :chart-data="datacollection"
-                    >
-                    </line-chart>
+                <div class="mt-0">
+                    <line-chart :chart-data="datacollection" />
                 </div>
             </el-col>
-            <el-col
-                    :span="6"
-            >
-                <div class="small"
-                     style="margin-left: 20px"
-                >
-                    <pie-chart
-                            :chart-data="pie"
-                    >
-                    </pie-chart>
+            <el-col :span="6">
+                <div class="small" style="margin-left: 20px">
+                    <pie-chart :chart-data="pie" />
                 </div>
-
             </el-col>
-
-
         </el-row>
-
-
     </div>
 </template>
 
+<script setup>
+import LineChart from '../../Chart/LineChart'
+import PieChart from '../../Chart/PieChart'
+import { onMounted, ref } from 'vue'
+import { getDashBoard } from '@/api/dashboard'
 
-<script>
+const datacollection = ref(null)
+const pie = ref(null)
+const data = ref({
+  count: {
+    asset: 12,
+  },
+})
+const inforCardData = ref('')
 
-    import LineChart from '../../Chart/LineChart'
-    import PieChart from '../../Chart/PieChart'
-    import {getDashBoard} from '@/api/dashboard'
+function fillData() {
+  datacollection.value = {
+    labels: data.value.asset_data.label,
+    datasets: [
+      {
+        label: '更新',
+        backgroundColor: '#74f81d',
+        data: data.value.asset_data.latest_data,
+        fill: false,
+        borderColor: '#74f81d',
+      }, {
+        label: '創建',
+        data: data.value.asset_data.create_data,
+        fill: false,
+        borderColor: '#f87979',
+      }
+    ],
+  }
+}
 
-    export default {
-        components: {
-            LineChart,
-            PieChart
-        },
-        data() {
-            return {
-                datacollection: null,
-                pie: null,
-                data: {
-                    count: {
-                        asset: 12,
-                    },
-                },
-                inforCardData: '',
+function pieData() {
+  pie.value = {
+    hoverBackgroundColor: "red",
+    hoverBorderWidth: 10,
+    labels: data.value.asset_type.label,
+    datasets: [
+      {
+        label: data.value.asset_type.label,
+        data: data.value.asset_type.data,
+        backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
+      }
+    ],
+  }
+}
 
-            }
-        },
-        mounted() {
+function getDash() {
+  getDashBoard()
+    .then((res) => {
+      data.value = res.data
+      inforCardData.value = res.data.count
+      fillData()
+      pieData()
+    })
+}
 
-        },
-        methods: {
-            fillData() {
-                this.datacollection = {
-                    labels: this.data.asset_data.label,
-                    datasets: [
-                        {
-                            label: '更新',
-                            backgroundColor: '#74f81d',
-                            data: this.data.asset_data.latest_data,
-                            fill: false,
-                            borderColor: '#74f81d',
-                            // pointBackgroundColor: 'white',
-                            // borderWidth: 1,
-                            // pointBorderColor: 'white',
-                        }, {
-                            label: '創建',
-                            // backgroundColor: '#f87979',
-                            data: this.data.asset_data.create_data,
-                            fill: false,
-                            borderColor: '#f87979',
-                            // pointBackgroundColor: 'white',
-                            // borderWidth: 1,
-                            // pointBorderColor: 'white',
-                        }
-                    ],
-                }
-            },
-            pieData() {
-                this.pie = {
-                    hoverBackgroundColor: "red",
-                    hoverBorderWidth: 10,
-                    labels: this.data.asset_type.label,
-                    datasets: [
-                        {
-                            label: this.data.asset_type.label,
-                            data: this.data.asset_type.data,
-                            // fill: false,
-                            backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
-                            // pointBackgroundColor: 'white',
-                            // pointBorderColor: 'white',
-                        }
-                    ],
-                }
-            },
-            getDash() {
-                getDashBoard()
-                    .then((res) => {
-                        this.data = res.data
-                        this.inforCardData = res.data.count
-                        this.fillData();
-                        this.pieData()
-                    })
-
-            }
-        },
-        created() {
-            this.getDash()
-            // console.log(this.data.asset_data.label)
-        }
-
-
-    }
-
-
+onMounted(() => {
+  getDash()
+})
 </script>
-
-<style scoped>
-
-
-</style>

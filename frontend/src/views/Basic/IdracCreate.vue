@@ -72,6 +72,8 @@
 <script>
 
     import {add} from '../../api/idrac'
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     export default {
         data() {
@@ -102,7 +104,7 @@
                 });
             },
             gopack() {
-                this.$router.push({name: 'Idrac'})
+                router.push({name: 'Idrac'})
             }
         }
 
