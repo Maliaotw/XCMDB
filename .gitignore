@@ -165,3 +165,4 @@ dmypy.json
 .opencode/node_modules/
 
 .env.dev
+.autorun-logs
